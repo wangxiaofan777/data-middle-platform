@@ -1,0 +1,8 @@
+server:
+  port: 18081
+  servlet:
+    context-path: /users
+
+spring:
+  profiles:
+    active: local

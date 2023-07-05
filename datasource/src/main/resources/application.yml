@@ -1,0 +1,8 @@
+server:
+  port: 18082
+  servlet:
+    context-path: /datasource
+
+spring:
+  profiles:
+    active: local

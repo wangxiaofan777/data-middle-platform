@@ -1,0 +1,10 @@
+version: '3'
+services:
+  datasource:
+    image: datasource:V1
+    pull_policy: if_not_present
+    ports:
+      - 18082
+    environment:
+      - APP_INSTANCE=1
+

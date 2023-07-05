@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: user
+  docker:
+    compose:
+      enabled: true
+      file: user/docker-compose.yaml
+      lifecycle-management: start_and_stop
+      start:
+        log-level: info
+        command: up
+      stop:
+        command: down
+        timeout: 10s
+      skip:
+        in-tests: true
+      host: 127.0.0.1
+      readiness:
+        tcp:
+          connect-timeout: 200ms
+          read-timeout: 200ms
+        wait: always
+        timeout: 2m
+      profiles:
+        active: local
+
