@@ -4,7 +4,7 @@ spring:
   docker:
     compose:
       enabled: true
-      file: user/docker-compose.yaml
+      file: user-service/docker-compose.yaml
       lifecycle-management: start_and_stop
       start:
         log-level: info

@@ -7,9 +7,9 @@
         <artifactId>data-middle-platform</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>datasource</artifactId>
+    <artifactId>datasource-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>datasource</name>
+    <name>datasource-service</name>
     <description>datasource</description>
     <properties>
         <java.version>17</java.version>

@@ -1,0 +1,49 @@
+<assembly>
+    <id>bin</id>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+        <!--bin 脚本-->
+        <fileSet>
+            <lineEnding>unix</lineEnding>
+            <directory>src/bin</directory>
+            <outputDirectory>${dist.name}/bin</outputDirectory>
+            <includes>
+                <include>*.sh</include>
+            </includes>
+            <fileMode>0755</fileMode>
+        </fileSet>
+
+        <!--服务Jar包-->
+        <fileSet>
+            <directory>../datasource-service/target</directory>
+            <outputDirectory>${dist.name}/services</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+            <fileMode>0644</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>../user-service/target</directory>
+            <outputDirectory>${dist.name}/services</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+            <fileMode>0644</fileMode>
+        </fileSet>
+
+    </fileSets>
+    <!--<dependencySets>
+        <dependencySet>
+            <outputDirectory>${dist.name}/libs</outputDirectory>
+            <excludes>
+                &lt;!&ndash;将服务Jar包放到Services包中，减少重复&ndash;&gt;
+                <exclude>com.oceanum.des:extract-web</exclude>
+                <exclude>com.oceanum.des:extract-sms</exclude>
+            </excludes>
+        </dependencySet>
+    </dependencySets>-->
+
+</assembly>

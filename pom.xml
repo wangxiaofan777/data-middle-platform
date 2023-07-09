@@ -13,11 +13,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>3.1.1</spring-boot.version>
+
+        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
     </properties>
 
     <modules>
-        <module>datasource</module>
-        <module>user</module>
+        <module>dist</module>
+        <module>datasource-service</module>
+        <module>user-service</module>
     </modules>
 
 
