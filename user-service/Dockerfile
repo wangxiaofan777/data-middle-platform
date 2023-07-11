@@ -6,7 +6,7 @@ VOLUME /home/app
 
 ENV TZ=Asia/Shanghai
 
-ADD target/user-0.0.1-SNAPSHOT.jar /home/app/app.jar
+ADD target/user-service-0.0.1-SNAPSHOT.jar /home/app/app.jar
 
 RUN bash -c "touch /home/app/app.jar"
 
