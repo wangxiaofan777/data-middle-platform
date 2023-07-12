@@ -23,6 +23,10 @@
         <module>dist</module>
         <module>datasource-service</module>
         <module>user-service</module>
+        <module>filesystem-service</module>
+        <module>job-service</module>
+        <module>model-service</module>
+        <module>product-service</module>
     </modules>
 
 
