@@ -2,6 +2,8 @@
 
 数据中台
 
+### 打包镜像
+
 * 构建本地镜像
 
 ```shell
@@ -10,10 +12,19 @@ docker build . -t datasource-service:v1
 
 ```
 
-* 推送到远程服务
+* 打包镜像并推送到镜像服务器
+
+> 数据源服务
 
 ```shell
-docker push wangxiaofan777/data-middle-platform:user-service
-docker push wangxiaofan777/data-middle-platform:datasource-service
+docker tag datasource-service:v1 wangxiaofan777/datasource-service:v1
+docker push wangxiaofan777/datasource-service:v1
+```
+
+> 用户服务
+
+```shell
+docker tag user-service:v1 wangxiaofan777/user-service:v1
+docker push wangxiaofan777/user-service:v1
 
 ```
