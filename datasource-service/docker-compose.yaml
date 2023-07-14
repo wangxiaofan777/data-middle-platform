@@ -1,7 +1,7 @@
 version: '3'
 services:
   datasource:
-    image: datasource:V1
+    image: datasource-service:v1
     pull_policy: if_not_present
     ports:
       - 18082

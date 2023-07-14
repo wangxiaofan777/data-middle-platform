@@ -3,7 +3,7 @@ spring:
     name: datasource
   docker:
     compose:
-      enabled: true
+      enabled: false
       file: datasource-service/docker-compose.yaml
       lifecycle-management: start_and_stop
       start:

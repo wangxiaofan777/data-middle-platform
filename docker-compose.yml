@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  mysql:
+    image: mysql
+    restart: always
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: Asia/Shanghai
+    ports:
+      - 3306:3306
+    volumes:
+      - D:/docker/data/mysql/data:/var/lib/mysql
+      - D:/docker/data/mysql/config/my.cnf:/etc/mysql/my.cnf
+      - D:/docker/data/mysql/log:/var/log
+    command:
+      --max_connections=1000
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --default-authentication-plugin=mysql_native_password
+  elasticsearch:
+    image: elasticsearch:8.8.1
+    restart: always
+    container_name: elasticsearch
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - ES_JAVA_OPTS= -Xms500m -Xmx500m
+    volumes:
+      - D:/docker/data/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - D:/docker/data/elasticsearch/data:/usr/share/elasticsearch/data
+      - D:/docker/data/elasticsearch/plugins:/usr/share/elasticsearch/plugins
+  kibana:
+    image: kibana:8.8.1
+    restart: always
+    container_name: kibana
+    ports:
+      - 5601:5601
+    volumes:
+      - D:/docker/data/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
+    networks:
+      - kibana-network
+networks:
+  kibana-network:

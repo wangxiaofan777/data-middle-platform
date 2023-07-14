@@ -1,7 +1,7 @@
 version: "3"
 services:
   user:
-    image: user:V1
+    image: user-service:v1
     pull_policy: never
     ports:
       - 18081
