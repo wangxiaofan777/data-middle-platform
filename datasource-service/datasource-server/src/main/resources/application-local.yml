@@ -1,6 +1,13 @@
 spring:
   application:
     name: datasource
+  profiles:
+    active: local
+  sql:
+    init:
+      continue-on-error: false
+      schema-locations: classpath:db/init.sql
+      data-locations: classpath:db/data.sql
   docker:
     compose:
       enabled: false
@@ -21,6 +28,12 @@ spring:
           read-timeout: 200ms
         wait: always
         timeout: 2m
-      profiles:
-        active: local
 
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto # ID 生成规则
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0

@@ -16,6 +16,7 @@
         <spring-cloud.version>2022.0.3</spring-cloud.version>
         <spring-cloud-alibaba.version>2022.0.0.0-RC2</spring-cloud-alibaba.version>
         <mysql.version>8.0.33</mysql.version>
+        <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
 
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
     </properties>
@@ -68,6 +69,14 @@
                 <version>${mysql.version}</version>
                 <scope>runtime</scope>
             </dependency>
+
+            <!-- mybatis-plus-boot-starter -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>
