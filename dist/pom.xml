@@ -19,15 +19,15 @@
         <!-- datasource-service -->
         <dependency>
             <groupId>com.wxf</groupId>
-            <artifactId>datasource-service</artifactId>
-            <version>${project.version}</version>
+            <artifactId>datasource-server</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <!-- user-service -->
         <dependency>
             <groupId>com.wxf</groupId>
-            <artifactId>user-service</artifactId>
-            <version>${project.parent.version}</version>
+            <artifactId>user-server</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

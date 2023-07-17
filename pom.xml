@@ -27,6 +27,7 @@
         <module>job-service</module>
         <module>model-service</module>
         <module>product-service</module>
+        <module>tenant-service</module>
     </modules>
 
 

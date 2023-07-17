@@ -1,26 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.wxf</groupId>
         <artifactId>data-middle-platform</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>user-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>user-service</name>
-    <packaging>pom</packaging>
-    <description>user</description>
 
+    <artifactId>tenant-service</artifactId>
+    <packaging>pom</packaging>
+
+    <name>tenant-service</name>
 
     <properties>
-        <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <modules>
-        <module>user-provider</module>
-        <module>user-server</module>
+        <module>tenant-server</module>
+        <module>tenant-provider</module>
     </modules>
+
+    <dependencies>
+
+    </dependencies>
+
 
 </project>
