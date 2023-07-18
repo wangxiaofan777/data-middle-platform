@@ -53,6 +53,7 @@
         <module>product-service</module>
         <module>tenant-service</module>
         <module>common-tools</module>
+        <module>commons</module>
     </modules>
 
 

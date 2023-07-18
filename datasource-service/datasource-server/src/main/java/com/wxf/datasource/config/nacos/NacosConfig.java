@@ -1,4 +1,4 @@
-package com.wxf.datasource.config;
+package com.wxf.datasource.config.nacos;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

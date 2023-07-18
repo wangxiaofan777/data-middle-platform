@@ -1,4 +1,4 @@
-package com.wxf.datasource.config;
+package com.wxf.datasource.config.mybatis.plus;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import org.apache.ibatis.reflection.MetaObject;

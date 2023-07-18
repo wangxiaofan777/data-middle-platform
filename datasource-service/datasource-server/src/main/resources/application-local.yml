@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: datasource
+    name: datasource-service
   sql:
     init:
       mode: embedded
@@ -21,9 +21,9 @@ spring:
   main:
     allow-bean-definition-overriding: true # 允许重复定义Bean
   datasource:
-    url: jdbc:mysql://10.50.17.166:3306/datasource?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&useIPv6=false
-    username: oceanum
-    password: lygr@0907
+    url: jdbc:mysql://127.0.0.1:3306/datasource?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&useIPv6=false
+    username: root
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       maximum-pool-size: 500
@@ -38,28 +38,8 @@ spring:
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
-  docker:
-    compose:
-      enabled: false
-      file: datasource-service/docker-compose.yml
-      lifecycle-management: start_and_stop
-      start:
-        log-level: info
-        command: up
-      stop:
-        command: down
-        timeout: 10s
-      skip:
-        in-tests: true
-      host: 127.0.0.1
-      readiness:
-        tcp:
-          connect-timeout: 200ms
-          read-timeout: 200ms
-        wait: always
-        timeout: 2m
 
-
+# mybatis-plus
 mybatis-plus:
   mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: com.wxf.datasource.model

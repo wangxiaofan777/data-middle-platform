@@ -28,3 +28,11 @@ docker tag user-service:v1 wangxiaofan777/user-service:v1
 docker push wangxiaofan777/user-service:v1
 
 ```
+
+
+* MySQL连接
+
+```shell
+# JVM 参数配置
+-Djava.net.preferIPv4Stack=true
+```
