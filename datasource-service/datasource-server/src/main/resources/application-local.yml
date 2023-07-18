@@ -1,13 +1,43 @@
+server:
+  port: 18082
+  servlet:
+    context-path: /datasource
+
 spring:
   application:
     name: datasource
-  profiles:
-    active: local
   sql:
     init:
+      mode: embedded
       continue-on-error: false
       schema-locations: classpath:db/init.sql
       data-locations: classpath:db/data.sql
+  servlet:
+    multipart:
+      enabled: true # 启用多文件上传
+      file-size-threshold: 0 # 最小文件大小
+      max-file-size: 100MB # 单个数据大小
+      max-request-size: 100MB # 总数据大小
+  main:
+    allow-bean-definition-overriding: true # 允许重复定义Bean
+  datasource:
+    url: jdbc:mysql://10.50.17.166:3306/datasource?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&useIPv6=false
+    username: oceanum
+    password: lygr@0907
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 500
+      max-lifetime: 18000000
+      minimum-idle: 30
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+      pool-name: HiKariDataSource
+      type: com.zaxxer.hikari.HikariDataSource
+      idle-timeout: 180000
+      auto-commit: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
   docker:
     compose:
       enabled: false
@@ -31,9 +61,24 @@ spring:
 
 
 mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.wxf.datasource.model
+  check-config-location: true # 启动时检查Mybatis XML 是否存在，默认不检查
   global-config:
     db-config:
       id-type: auto # ID 生成规则
       logic-delete-field: deleted
       logic-delete-value: 1
       logic-not-delete-value: 0
+  configuration:
+    # 自动驼峰命名规则映射
+    map-underscore-to-camel-case: true
+    # 打印SQL
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 日志
+logging:
+  config: classpath:log4j2-spring.xml
+  charset:
+    console: utf-8
+
