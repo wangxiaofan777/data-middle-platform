@@ -10,7 +10,7 @@ import java.io.Serializable;
  * HTTP返回值枚举
  *
  * @param <T>
- * @author WangMaoSong
+ * @author WangXiaofan777
  */
 @Data
 public class HttpResult<T> implements Serializable {

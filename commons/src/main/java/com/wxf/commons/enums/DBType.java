@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * 数据库枚举
  *
- * @author WangMaoSong
+ * @author WangXiaofan777
  * @version 1.1.0
  * @since 2023/7/18 14:22:28
  */

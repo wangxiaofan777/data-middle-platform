@@ -1,6 +1,6 @@
 FROM openjdk:8
-LABEL authors="WangMaoSong"
-MAINTAINER WangMaoSong
+LABEL authors="WangXiaofan777"
+MAINTAINER WangXiaofan777
 
 VOLUME /home/app
 

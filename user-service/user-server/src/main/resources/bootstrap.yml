@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: system-service
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
+  cloud:
+    nacos:
+      discovery:
+        enabled: true # 开启服务发现
+        server-addr: ${spring.cloud.nacos.config.server-addr}
+        # 用户名
+        username: ${spring.cloud.nacos.config.username}
+        # 密码
+        password: ${spring.cloud.nacos.config.password}
+        # 配置分组
+        group: ${spring.cloud.nacos.config.group}
+        # 命名空间 默认default
+        namespace: ${spring.profiles.active}
+        # 默认集群名称
+        cluster-name: ${spring.profiles.active}-cluster
+        service: ${spring.application.name}-service
+        log-name: ${spring.application.name}-nacos.log
+        register-enabled: true
+        metadata:
+          service.name: ${spring.application.name}
+          service.version: 1.0
+        # 心跳间隔。时间单位:秒。心跳间隔
+        heart-beat-interval: 3
+        # 心跳暂停。时间单位:秒。 即服务端6秒收不到客户端心跳，会将该客户端注册的实例设为不健康
+        heart-beat-timeout: 6
+        # IP删除超时。时间单位:秒。即服务端9秒收不到客户端心跳，会将该客户端注册的实例删除：
+        ip-delete-timeout: 9
+      config:
+        # 开启配置中心，默认为true
+        enabled: true
+        enable-remote-sync-config: true
+        # 配置扩展
+        file-extension: yml
+        # 配置组，否则默认是default
+        group: ${spring.profiles.active}
+        # 命名空间 默认default
+        namespace: ${spring.profiles.active}
+        prefix: ${spring.application.name}
+        # Nacos服务地址
+        server-addr: 127.0.0.1:8848
+        # Nacos用户名
+        username: nacos
+        # Nacos密码
+        password: nacos
+        extension-configs: # 配置
+          - data-id: ${spring.cloud.nacos.config.prefix}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+            group: ${spring.profiles.active}
+            refresh: true
+    loadbalancer:
+      enabled: true
+
+system-service:
+  ribbon:

@@ -3,7 +3,7 @@ package com.wxf.commons.enums;
 /**
  * Base 枚举
  *
- * @author WangMaoSong
+ * @author WangXiaofan777
  * @since 2022/10/20 14:10
  */
 public interface BaseEnum {

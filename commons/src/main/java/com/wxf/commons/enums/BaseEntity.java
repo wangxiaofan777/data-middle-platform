@@ -16,7 +16,7 @@ import java.util.Objects;
 /**
  * Entity基类
  *
- * @author WangMaoSong
+ * @author WangXiaofan777
  * @since 2022/9/21 12:33
  */
 @Data

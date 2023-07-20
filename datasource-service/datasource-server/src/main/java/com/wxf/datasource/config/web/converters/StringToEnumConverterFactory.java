@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * 字符串转枚举
  *
- * @author WangMaoSong
+ * @author WangXiaofan777
  * @since 2022/11/2 19:53
  */
 public class StringToEnumConverterFactory implements ConverterFactory<String, BaseEnum> {

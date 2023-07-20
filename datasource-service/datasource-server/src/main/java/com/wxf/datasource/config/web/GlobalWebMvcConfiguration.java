@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /**
  * Web全局配置
  *
- * @author WangMaoSong
+ * @author WangXiaofan777
  * @since  2022/11/2 19:48
  */
 @Configuration

@@ -54,6 +54,7 @@
         <module>tenant-service</module>
         <module>common-tools</module>
         <module>commons</module>
+        <module>system-service</module>
     </modules>
 
 

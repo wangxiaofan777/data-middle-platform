@@ -3,7 +3,7 @@ package com.wxf.commons.enums;
 /**
  * 通用返回码
  *
- * @author WangMaoSong
+ * @author WangXiaofan777
  * @date 2022/10/20 14:15
  */
 public enum BaseHttpCode implements BaseEnum {

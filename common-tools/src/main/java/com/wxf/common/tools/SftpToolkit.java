@@ -24,7 +24,7 @@ import java.util.Vector;
 /**
  * Sftp工具类
  *
- * @author WangMaoSong
+ * @author WangXiaofan777
  * @version 1.1.0
  * @since 2023/4/13 9:49:00
  */
