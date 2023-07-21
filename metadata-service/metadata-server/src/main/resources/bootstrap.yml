@@ -1,6 +1,6 @@
 spring:
   application:
-    name: system-service
+    name: metadata-service
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:local}
   cloud:

@@ -9,7 +9,7 @@
         <property name="LOG_PATTERN" value="%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
         <!-- 定义日志存储的路径 -->
         <property name="FILE_PATH" value="$${env:LOG_DIR:-logs}"/>
-        <property name="FILE_NAME" value="datasource-service"/>
+        <property name="FILE_NAME" value="metadata-service"/>
 
     </Properties>
 
