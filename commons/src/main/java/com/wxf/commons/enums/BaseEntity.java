@@ -1,9 +1,7 @@
 package com.wxf.commons.enums;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,12 +24,6 @@ import java.util.Objects;
 public class BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 3039968363915104195L;
-
-    /**
-     * ID
-     */
-    @TableId(type = IdType.AUTO)
-    private Long id;
 
     /**
      * 创建人
@@ -62,8 +54,7 @@ public class BaseEntity implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BaseEntity that = (BaseEntity) o;
-        return Objects.equals(id, that.id)
-                && Objects.equals(createBy, that.createBy)
+        return Objects.equals(createBy, that.createBy)
                 && Objects.equals(createTime, that.createTime)
                 && Objects.equals(updateBy, that.updateBy)
                 && Objects.equals(updateTime, that.updateTime);
@@ -71,6 +62,6 @@ public class BaseEntity implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, createBy, createTime, updateBy, updateTime);
+        return Objects.hash(createBy, createTime, updateBy, updateTime);
     }
 }

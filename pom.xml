@@ -55,6 +55,7 @@
         <module>common-tools</module>
         <module>commons</module>
         <module>system-service</module>
+        <module>metadata-service</module>
     </modules>
 
 

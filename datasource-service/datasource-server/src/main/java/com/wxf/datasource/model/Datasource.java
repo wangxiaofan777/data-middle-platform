@@ -1,5 +1,7 @@
 package com.wxf.datasource.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.wxf.commons.enums.BaseEntity;
 import com.wxf.commons.enums.DBType;
 import lombok.AllArgsConstructor;
@@ -21,6 +23,10 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Datasource extends BaseEntity {
+
+    // ID
+    @TableId(type = IdType.AUTO)
+    private Long id;
 
     // 数据源名称
     private String datasourceName;
