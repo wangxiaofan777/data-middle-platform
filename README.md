@@ -36,3 +36,16 @@ docker push wangxiaofan777/user-service:v1
 # JVM 参数配置
 -Djava.net.preferIPv4Stack=true
 ```
+
+
+channels:
+- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+- https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+- https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
+- defaults
+  show_channel_urls: true
+
+envs_dirs:
+- /Users/wangmaosong/data/anaconda3/envs
+  pkgs_dirs:
+- /Users/wangmaosong/data/anaconda3/pkgs
