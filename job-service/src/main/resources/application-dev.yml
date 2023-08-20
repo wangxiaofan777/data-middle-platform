@@ -1,0 +1,106 @@
+server:
+  port: 9907
+  error:
+    include-message: always
+  servlet:
+    context-path: /job-execution
+spring:
+  application:
+    name: job-execution
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/job?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&sessionVariables=sql_mode=''
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 500
+      max-lifetime: 18000000
+      minimum-idle: 30
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+      pool-name: HiKariDataSource
+      type: com.zaxxer.hikari.HikariDataSource
+      idle-timeout: 180000
+      auto-commit: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  hadoop:
+    kerberos:
+      krb5: /etc/krb5.conf
+      keytab:
+        user: devops@HADOOP.COM
+        path: /home/devops/devops.keytab
+
+#mybatis-blus 相关配置
+mybatis-plus:
+  #datasource
+  mapper-locations: classpath:/mapper/*.xml
+  #实体类扫描
+  type-aliases-package: com.oceanum.extracting.entity
+  #启动时是否检查 MyBatis XML 文件的存在，默认不检查
+  check-config-location: true
+  global-config:
+    db-config:
+      # 生成ID方式： AUTO 数据库自增  INPUT 自己输入  ASSIGN_UUID 默认生成器
+      id-type: ASSIGN_UUID
+      #逻辑删除字段
+      #      logic-delete-field: deleted
+      # 逻辑删除已删除值
+      #      logic-delete-value: 1
+      #逻辑删除未删除值
+      #      logic-not-delete-value: 0
+      #自身实现增加表前缀
+      #table-prefix: dc_
+      #是否显示LOGO
+  configuration:
+    ## 自动驼峰命名规则映射
+    map-underscore-to-camel-case: true
+    #打印sql语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+
+# Spark配置
+spark:
+  sparkHome: /opt/cloudera/parcels/SPARK3-3.1.2.cdh6.3.2/lib/spark3         # SPARK_HOME环境变量
+  javaHome: /usr/java/jdk1.8.0_191-amd64                                    # JAVA_HOME环境变量
+  verbose: true                                                             # 是否输出更多日志
+  config: # 通用全局配置
+    spark.kerberos.keytab: ${kerberos.keytab}                               # keytab
+    spark.kerberos.principal: ${kerberos.principal}                         # principal
+    spark.kerberos.relogin.period: ${kerberos.interval}                     # 刷新时间
+
+
+job:
+  enabled: true
+
+# kerberos
+kerberos:
+  # 是否开启认证
+  auth: true
+  authentication: kerberos
+  principal: devops@HADOOP.COM
+  keytab: /home/devops/devops.keytab
+  krb5Conf: /etc/krb5.conf
+  interval: 30m                                             # 刷新时间
+
+
+# Hive
+hive:
+  enabled: true
+  driverName: org.apache.hive.jdbc.HiveDriver
+  url: jdbc:hive2://10.50.17.140:10000/;principal=hive/optimus30a140@HADOOP.COM
+  props:
+    maximum-pool-size: 500
+    max-lifetime: 18000000
+    minimum-idle: 30
+    connection-timeout: 30000
+    connection-test-query: SELECT 1
+    pool-name: HiKariDataSource
+    type: com.zaxxer.hikari.HikariDataSource
+    idle-timeout: 180000
+    auto-commit: true
+
+logging:
+  config: classpath:log4j2-dev.xml

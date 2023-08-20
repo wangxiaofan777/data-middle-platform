@@ -24,7 +24,7 @@
         <elasticsearch-spark-30.version>7.17.7</elasticsearch-spark-30.version>
         <protobuf.version>3.21.12</protobuf.version>
         <grpc.version>1.51.1</grpc.version>
-        <netty-all.version>4.1.91.Final</netty-all.version>
+        <netty-all.version>4.1.96.Final</netty-all.version>
         <scala.binary.version>2.12</scala.binary.version>
         <scala.version>2.12.16</scala.version>
         <hadoop.version>3.0.0</hadoop.version>
@@ -56,6 +56,7 @@
         <module>commons</module>
         <module>system-service</module>
         <module>metadata-service</module>
+        <module>label-service</module>
     </modules>
 
 
@@ -142,9 +143,7 @@
                 <artifactId>nacos-client</artifactId>
                 <version>${nacos-client.version}</version>
             </dependency>
-
-
-
+            
             <!-- netty-all -->
             <dependency>
                 <groupId>io.netty</groupId>
@@ -473,6 +472,87 @@
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-launcher_${scala.binary.version}</artifactId>
                 <version>${spark.version}</version>
+            </dependency>
+
+            <!-- hadoop-hdfs -->
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-hdfs</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+
+            <!-- hadoop-hdfs-client -->
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-hdfs-client</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+
+            <!-- hadoop-yarn-client -->
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-yarn-client</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+
+            <!-- hadoop-yarn-api -->
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-yarn-api</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+
+            <!-- flink-clients -->
+            <!--<dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-clients</artifactId>
+                <version>1.17.1</version>
+            </dependency>-->
+
+            <!-- flink-yarn -->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-yarn</artifactId>
+                <version>1.17.1</version>
+            </dependency>
+
+
+            <!--Hive Jdbc-->
+            <dependency>
+                <groupId>org.apache.hive</groupId>
+                <artifactId>hive-jdbc</artifactId>
+                <version>${hive.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-reload4j</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.eclipse.jetty.aggregate</groupId>
+                        <artifactId>jetty-all</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>jdk.tools</artifactId>
+                        <groupId>jdk.tools</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!--Hive common-->
+            <dependency>
+                <groupId>org.apache.hive</groupId>
+                <artifactId>hive-common</artifactId>
+                <version>${hive.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.eclipse.jetty.aggregate</groupId>
+                        <artifactId>jetty-all</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>asm</groupId>
+                        <artifactId>asm</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
         </dependencies>

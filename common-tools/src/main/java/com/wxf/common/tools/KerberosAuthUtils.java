@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Kerberos认证工具类
  *
- * @author WangMaoSong
+ * @author WangXiaofan777
  * @version 1.1.0
  * @since 2023/7/18 16:08:13
  */

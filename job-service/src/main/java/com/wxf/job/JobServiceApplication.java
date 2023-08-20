@@ -1,4 +1,4 @@
-package com.wxf.jobservice;
+package com.wxf.job;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
