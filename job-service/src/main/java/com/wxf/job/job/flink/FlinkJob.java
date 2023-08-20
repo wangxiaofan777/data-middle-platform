@@ -2,7 +2,7 @@ package com.wxf.job.job.flink;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.oceanum.job.execution.job.AbstractJob;
+import com.wxf.job.job.AbstractJob;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.flink.client.deployment.ClusterDeploymentException;
 import org.apache.flink.client.deployment.ClusterSpecification;

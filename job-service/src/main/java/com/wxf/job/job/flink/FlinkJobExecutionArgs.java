@@ -1,6 +1,6 @@
 package com.wxf.job.job.flink;
 
-import com.oceanum.job.execution.job.JobExecutionArgs;
+import com.wxf.job.job.JobExecutionArgs;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
