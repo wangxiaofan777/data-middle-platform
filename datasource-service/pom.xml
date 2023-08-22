@@ -17,6 +17,7 @@
     <modules>
         <module>datasource-provider</module>
         <module>datasource-server</module>
+        <module>datasource-plugin</module>
     </modules>
 
     <properties>
