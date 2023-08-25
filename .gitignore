@@ -25,4 +25,4 @@ replay_pid*
 
 **/target/**
 /config/**
-**/dependency-reduced-pom.xml
+**dependency-reduced-pom.xml
