@@ -57,6 +57,7 @@
         <module>system-service</module>
         <module>metadata-service</module>
         <module>label-service</module>
+        <module>platform-jobs</module>
     </modules>
 
 
