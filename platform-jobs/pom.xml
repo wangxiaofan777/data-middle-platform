@@ -74,6 +74,36 @@
                 <version>${flink.version}</version>
             </dependency>
 
+            <!-- flink-clients -->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-clients</artifactId>
+                <version>${flink.version}</version>
+            </dependency>
+
+            <!-- flink-sql-client -->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-sql-client</artifactId>
+                <version>${flink.version}</version>
+            </dependency>
+
+
+            <!-- flink-test-utils -->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-test-utils</artifactId>
+                <version>${flink.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- flink-table-test-utils -->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-table-test-utils</artifactId>
+                <version>${flink.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
 
     </dependencyManagement>
