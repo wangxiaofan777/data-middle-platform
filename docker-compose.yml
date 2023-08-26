@@ -1,0 +1,255 @@
+version: "3.8"
+# zookeeper: 172.26.0.10
+# kafka: 172.26.0.11
+# flink: - job manager 172.26.0.20
+#        - task manager(s) random assigment in 172.26.0.0/24
+services:
+  ZooKeeper:
+    image: ubuntu/zookeeper
+    container_name: ZooKeeper
+    hostname: ZooKeeper
+    volumes:
+      - ./data/zk_data:/data
+    ports:
+      - "2181:2181"
+    networks:
+      kafka-flink-cluster-network:
+        ipv4_address: 172.26.0.10
+
+  Kafka:
+    image: wurstmeister/kafka
+    ports:
+      - "9092:9092"
+    depends_on:
+      - ZooKeeper
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
+      KAFKA_MESSAGE_MAX_BYTES: 52428800  # 50M
+      KAFKA_CREATE_TOPICS: "topic_one:1:1,topic_two:3:1"
+      KAFKA_ZOOKEEPER_CONNECT: ZooKeeper:2181
+    volumes:
+      - ./data/kafka-logs:/kafka
+    networks:
+      kafka-flink-cluster-network:
+        ipv4_address: 172.26.0.11
+
+  FlinkJobManager:
+    image: flink:1.17.1-scala_2.12-java8
+    container_name: FlinkJobManager
+    hostname: FlinkJobManager
+    volumes:
+      - ./data/flink-jobmanager:/data
+    expose:
+      - "6123"
+    links:
+      -  Kafka
+    networks:
+      kafka-flink-cluster-network:
+        ipv4_address: 172.26.0.20
+    ports:
+      - "8081:8081"
+    command: jobmanager
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: FlinkJobManager
+
+  FlinkTaskManager:
+    image: flink:1.17.1-scala_2.12-java8
+    #container_name: FlinkTaskManager
+    #hostname: FlinkTaskManager
+    expose:
+      - "6121"
+      - "6122"
+    depends_on:
+      - FlinkJobManager
+    command: taskmanager
+    deploy:
+      replicas: 3
+    links:
+      - "FlinkJobManager:jobmanager"
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: FlinkJobManager
+        taskmanager.numberOfTaskSlots: 2
+    networks:
+      - kafka-flink-cluster-network
+
+#  node-exporter:
+#    image: prom/node-exporter:latest
+#    restart: always
+#    ports:
+#      - "9100:9100"
+#    networks:
+#      - prom
+#
+#  #  dingtalk:
+#  #    image: timonwong/prometheus-webhook-dingtalk:latest
+#  #    restart: always
+#  #    volumes:
+#  #      - type: bind
+#  #        source: ./alertmanager/config.yml
+#  #        target: /etc/prometheus-webhook-dingtalk/config.yml
+#  #        read_only: true
+#  #    ports:
+#  #      - "8060:8060"
+#  #    networks:
+#  #      - prom
+#
+#  alertmanager:
+#    #depends_on:
+#    #  - dingtalk
+#    image: prom/alertmanager:latest
+#    restart: always
+#    volumes:
+#      - type: bind
+#        source: ./alertmanager/alertmanager.yml
+#        target: /etc/alertmanager/alertmanager.yml
+#        read_only: true
+#      - type: volume
+#        source: alertmanager
+#        target: /etc/alertmanager
+#    ports:
+#      - "9093:9093"
+#      - "9094:9094"
+#    networks:
+#      - prom
+#
+#  prometheus:
+#    depends_on:
+#      - alertmanager
+#    image: prom/prometheus:latest
+#    restart: always
+#    command:
+#      - --config.file=/etc/prometheus/prometheus.yml
+#      - --web.enable-lifecycle
+#    volumes:
+#      - type: bind
+#        source: ./prometheus/prometheus.yml
+#        target: /etc/prometheus/prometheus.yml
+#        read_only: true
+#      - type: bind
+#        source: ./prometheus/rules.yml
+#        target: /etc/prometheus/rules.yml
+#        read_only: true
+#        #- type: bind
+#        #source: ./prometheus/job-web.yml
+#        #target: /etc/prometheus/job-web.yml
+#        #read_only: true
+#      - type: volume
+#        source: prometheus
+#        target: /prometheus
+#
+#    ports:
+#      - "9090:9090"
+#    networks:
+#      - prom
+#
+#  grafana:
+#    depends_on:
+#      - prometheus
+#    image: grafana/grafana:latest
+#    restart: always
+#    volumes:
+#      - type: volume
+#        source: grafana
+#        target: /var/lib/grafana
+#    ports:
+#      - "3000:3000"
+#    networks:
+#      - prom
+#
+#  cadvisor:
+#    image: google/cadvisor:latest
+#    #container_name: cadvisor
+#    hostname: cadvisor
+#    restart: always
+#    volumes:
+#      - /:/rootfs:ro
+#      - /var/run:/var/run:rw
+#      - /sys:/sys:ro
+#      - /var/lib/docker/:/var/lib/docker:ro
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - prom
+#    privileged: true
+#
+#  mysqld-exporter:
+#    image: prom/mysqld-exporter
+#    hostname: mysqld-exporter
+#    restart: always
+#    ports:
+#      - "9104:9104"
+#    environment:
+#      - DATA_SOURCE_NAME=root:12345@(10.211.122.9:3306)/  #username:password@(ip:端口)
+#    networks:
+#      - prom
+#
+#  redis-exporter:
+#    image: oliver006/redis_exporter
+#    #container_name: mysqld-exporter
+#    hostname: redis-exporter
+#    restart: always
+#    ports:
+#      - "9121:9121"
+#    command:
+#      - --redis.addr=redis://10.211.122.9:6379
+#      - --redis.password=123456
+#    networks:
+#      - prom
+#
+#  blackbox_exporter:
+#    #container_name: blackbox_exporter
+#    image: prom/blackbox-exporter:master
+#    restart: always
+#    volumes:
+#      - /docker/blackbox_exporter/config.yml:/etc/blackbox_exporter/config.yml
+#    ports:
+#      - 9115:9115
+#
+#  rocketmq-exporter:
+#    image: sawyerlan/rocketmq-exporter
+#    #container_name: mysqld-exporter
+#    hostname: sawyerlan/rocketmq-exporter
+#    restart: always
+#    ports:
+#      - "5557:5557"
+#    command:
+#      #- --rocketmq.config.namesrvAddr=172.30.0.150:9876;172.30.0.151:9876
+#      - --rocketmq.config.namesrvAddr=172.30.0.150:9876
+#    networks:
+#      - prom
+#
+#volumes:
+#  prometheus:
+#    driver: local
+#    driver_opts:
+#      type: none
+#      o: bind
+#      device: /docker/prometheus/data
+#  grafana:
+#    driver: local
+#    driver_opts:
+#      type: none
+#      o: bind
+#      device: /docker/grafana
+#
+#  alertmanager:
+#    driver: local
+#    driver_opts:
+#      type: none
+#      o: bind
+#      device: /docker/alertmanager
+
+networks:
+  prom:
+    driver: bridge
+  kafka-flink-cluster-network:
+    # external: true
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.26.0.0/24
+
