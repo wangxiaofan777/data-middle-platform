@@ -4,6 +4,14 @@ version: "3.8"
 # flink: - job manager 172.26.0.20
 #        - task manager(s) random assigment in 172.26.0.0/24
 services:
+  mysql:
+    image: mysql:8.0.30
+    container_name: mysql_8
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: "root" # root密码
+      MYSQL_USER: root  # 新用户账号
+      MYSQL_PASSWORD: root # 新用户 密码
   ZooKeeper:
     image: ubuntu/zookeeper
     container_name: ZooKeeper
@@ -242,6 +250,7 @@ services:
 #      type: none
 #      o: bind
 #      device: /docker/alertmanager
+
 
 networks:
   prom:

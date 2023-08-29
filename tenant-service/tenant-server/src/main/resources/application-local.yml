@@ -1,5 +1,5 @@
 server:
-  port: 18082
+  port: 18083
   servlet:
     context-path: /tenant
 
@@ -21,7 +21,7 @@ spring:
   main:
     allow-bean-definition-overriding: true # 允许重复定义Bean
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/tenant?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&useIPv6=false
+    url: jdbc:mysql://127.0.0.1:3306/tenant_service?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&useIPv6=false
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -62,3 +62,12 @@ logging:
   charset:
     console: utf-8
 
+# dubbo
+dubbo:
+  application:
+    name: ${spring.application.name}
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: zookeeper://127.0.0.1:2181
