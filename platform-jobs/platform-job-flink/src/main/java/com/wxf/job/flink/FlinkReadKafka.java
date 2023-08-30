@@ -6,20 +6,19 @@ import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.connector.base.DeliveryGuarantee;
 import org.apache.flink.connector.kafka.sink.KafkaRecordSerializationSchema;
 import org.apache.flink.connector.kafka.sink.KafkaSink;
-import org.apache.flink.connector.kafka.sink.KafkaSinkBuilder;
 import org.apache.flink.connector.kafka.source.KafkaSource;
 import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializer;
 import org.apache.flink.connector.kafka.source.reader.deserializer.KafkaRecordDeserializationSchema;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.connectors.kafka.KafkaSerializationSchema;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.util.Collections;
 
 /**
  * 给kafka发消息： kafka-console-producer.sh --bootstrap-server 127.0.0.1:9092 --topic topic_two
+ * 从kafka控制台消费数据：kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic topic_one --from-beginning
  * flink读取kafka
  */
 public class FlinkReadKafka {
