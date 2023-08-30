@@ -71,3 +71,10 @@ dubbo:
     port: -1
   registry:
     address: zookeeper://127.0.0.1:2181
+    check: false # 不做服务注册检查，即使报错也能启动
+  provider:
+    auth: false
+    retries: 3 # 重试次数
+  consumer:
+    check: false # 注册失败也能启动
+    retries: 3 # 重试次数
