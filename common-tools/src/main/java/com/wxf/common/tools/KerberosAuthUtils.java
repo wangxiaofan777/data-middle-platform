@@ -81,13 +81,13 @@ public class KerberosAuthUtils {
                 UserGroupInformation.getCurrentUser().reloginFromKeytab();
                 log.info("============================== kerberos refresh end =======================================");
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error("kerberos refresh error", e);
             }
         }, 1, interval.getSeconds(), TimeUnit.SECONDS);
     }
 
 
     public static void main(String[] args) {
-        KerberosAuthUtils.login("devops@HADOOP.COM", "C:/Users/WangMaoSong/Desktop/kerberos/139/devops.keytab", "C:/Users/WangMaoSong/Desktop/kerberos/139/krb5.conf");
+        KerberosAuthUtils.login("devops@HADOOP.COM", "D:/workspace/data-middle-platform/config/devops.keytab", "D:/workspace/data-middle-platform/config/krb5.conf");
     }
 }

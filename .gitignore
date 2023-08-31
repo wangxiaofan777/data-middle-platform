@@ -27,3 +27,4 @@ replay_pid*
 /config/**
 /data/
 /logs/**
+/**/dependency-reduced-pom.xml

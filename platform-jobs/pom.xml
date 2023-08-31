@@ -21,6 +21,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <flink.version>1.17.1</flink.version>
         <commons-collections.version>3.2.2</commons-collections.version>
+        <antlr-runtime.version>3.5.3</antlr-runtime.version>
+
     </properties>
 
     <dependencyManagement>
@@ -60,6 +62,13 @@
                 <version>${flink.version}</version>
             </dependency>
 
+            <!-- flink-table-planner-loader -->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-table-planner-loader</artifactId>
+                <version>${flink.version}</version>
+            </dependency>
+
             <!-- flink-table-api-scala-bridge -->
             <dependency>
                 <groupId>org.apache.flink</groupId>
@@ -74,6 +83,12 @@
                 <version>${flink.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-connector-base</artifactId>
+                <version>${flink.version}</version>
+            </dependency>
+
             <!-- flink-clients -->
             <dependency>
                 <groupId>org.apache.flink</groupId>
@@ -81,19 +96,29 @@
                 <version>${flink.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-connector-base</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-
-
             <!-- flink-sql-client -->
             <dependency>
                 <groupId>org.apache.flink</groupId>
                 <artifactId>flink-sql-client</artifactId>
                 <version>${flink.version}</version>
             </dependency>
+
+            <!-- Flink Dependency -->
+            <!-- flink-connector-hive -->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-connector-hive_${scala.binary.version}</artifactId>
+                <version>${flink.version}</version>
+            </dependency>
+
+            <!-- Hive Dependency -->
+            <dependency>
+                <groupId>org.apache.hive</groupId>
+                <artifactId>hive-exec</artifactId>
+                <version>${hive.version}</version>
+            </dependency>
+
+
 
 
             <!-- flink-test-utils -->
