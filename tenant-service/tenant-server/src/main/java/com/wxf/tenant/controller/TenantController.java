@@ -1,10 +1,10 @@
 package com.wxf.tenant.controller;
 
 import com.wxf.tenant.service.TenantService;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 
 /**
  * 租户Controller

@@ -1,0 +1,16 @@
+server:
+  port: 9900
+#  servlet:
+#    context-path: /gateway
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      enabled: true
+      routes:
+        - id: baidu
+          uri: https://www.baidu.com
+          predicates:
+            - Path=/baidu/**
+

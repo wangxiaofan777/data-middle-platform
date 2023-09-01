@@ -40,6 +40,7 @@
         <logging.version>2.19.0</logging.version>
         <nacos-client.version>2.2.4</nacos-client.version>
         <dubbo.version>3.2.5</dubbo.version>
+        <redisson.version>3.23.4</redisson.version>
 
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
     </properties>
@@ -59,6 +60,7 @@
         <module>metadata-service</module>
         <module>label-service</module>
         <module>platform-jobs</module>
+        <module>gateway-service</module>
     </modules>
 
 
@@ -265,6 +267,13 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
+            </dependency>
+
+            <!-- redisson -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
             </dependency>
 
 
