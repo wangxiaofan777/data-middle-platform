@@ -4,6 +4,15 @@ version: "3.8"
 # flink: - job manager 172.26.0.20
 #        - task manager(s) random assigment in 172.26.0.0/24
 services:
+  redis:
+    image: redis:7.2.0
+    container_name: redis
+    hostname: redis
+    ports:
+      - "6379:6379"
+    command: redis-server /redis.conf
+
+
   mysql:
     image: mysql:8.0.30
     container_name: mysql_8
