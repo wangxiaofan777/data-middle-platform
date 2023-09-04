@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SystemTenant implements Serializable {
+public class ClusterTenant implements Serializable {
 
 
     // 系统ID

@@ -3,6 +3,7 @@ package com.wxf.tenant.model;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.wxf.commons.enums.BaseEntity;
+import com.wxf.tenant.vo.SparkQueueResourceVo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -52,5 +53,20 @@ public class SparkQueueResource extends BaseEntity implements Serializable {
 
     // 配置 --conf
     private Map<String, String> config;
+
+
+    public static SparkQueueResource of(SparkQueueResourceVo sparkQueueResourceVo) {
+        return SparkQueueResource.builder()
+                .queue(sparkQueueResourceVo.getQueue())
+                .driverCores(sparkQueueResourceVo.getDriverCores())
+                .driverMemory(sparkQueueResourceVo.getDriverMemory())
+                .executorNum(sparkQueueResourceVo.getExecutorNum())
+                .executorCores(sparkQueueResourceVo.getExecutorCores())
+                .executorMemory(sparkQueueResourceVo.getExecutorMemory())
+                .timeOut(sparkQueueResourceVo.getTimeOut())
+                .additionArgs(sparkQueueResourceVo.getAdditionArgs())
+                .config(sparkQueueResourceVo.getConfig())
+                .build();
+    }
 
 }
