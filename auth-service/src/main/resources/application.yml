@@ -1,0 +1,37 @@
+server:
+  port: 9909
+  servlet:
+    context-path: /auth
+
+spring:
+  application:
+    name: auth-service
+  security:
+    oauth2:
+      authorization-server:
+        client:
+          oidc-client:
+            registration:
+              client-id: "oidc-client"
+              client-secret: "{noop}secret"
+              client-authentication-methods:
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "authorization_code"
+                - "refresh_token"
+              redirect-uris:
+                - "http://127.0.0.1:8080/login/oauth2/code/oidc-client"
+              post-logout-redirect-uris:
+                - "http://127.0.0.1:8080/"
+              scopes:
+                - "openid"
+                - "profile"
+            require-authorization-consent: true
+
+logging:
+  file:
+    name: ${spring.application.name}.log
+    path: logs
+  level:
+    root: info
+#  config: classpath:logback-spring.xml

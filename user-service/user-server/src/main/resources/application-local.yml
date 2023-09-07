@@ -8,10 +8,10 @@ spring:
     name: user-service
   sql:
     init:
-      mode: embedded
+      mode: always
       continue-on-error: false
-      schema-locations: classpath:db/init.sql
-      data-locations: classpath:db/data.sql
+      schema-locations: classpath:/db/init.sql
+#      data-locations: classpath:/db/data.sql
   servlet:
     multipart:
       enabled: true # 启用多文件上传
@@ -38,6 +38,35 @@ spring:
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
+  security:
+    oauth2:
+      client:
+        registration:
+          auth_service:
+            provider: auth_provider
+            client-id: "user_service_id"
+            client-secret: "user_service_secret"
+            client-authentication-method: "client_secret_post"
+            authorization-grant-type: "authorization_code"
+            redirect-uri: "https://www.baidu.com"
+            scope:
+              - "all"
+            client-name: "user_service"
+
+        #          github:
+        #            client-id: Iv1.2ca5be8c36b99a36
+        #            client-secret: aef8ff70890349d77d76b9bcf513ef2ba422771d
+        #            redirect-uri: https://www.baidu.com
+
+        provider:
+          auth_provider:
+            authorization-uri: "http://127.0.0.1:9909/auth/oauth2/authorize"
+            token-uri: "http://127.0.0.1:9909/auth/oauth2/token"
+            user-info-uri: "http://127.0.0.1:9909/auth/oauth2/userinfo"
+#            user-info-authentication-method: "post"
+#            user-name-attribute: "username"
+#            jwk-set-uri: "http://127.0.0.1:9909/auth/oauth2/certs"
+#            issuer-uri: "http://127.0.0.1:9909/auth/oauth2/token"
 
 # mybatis-plus
 mybatis-plus:
