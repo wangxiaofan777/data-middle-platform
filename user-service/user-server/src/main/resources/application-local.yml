@@ -2,6 +2,7 @@ server:
   port: 18082
   servlet:
     context-path: /user
+  address:
 
 spring:
   application:
@@ -11,7 +12,7 @@ spring:
       mode: always
       continue-on-error: false
       schema-locations: classpath:/db/init.sql
-#      data-locations: classpath:/db/data.sql
+  #      data-locations: classpath:/db/data.sql
   servlet:
     multipart:
       enabled: true # 启用多文件上传
@@ -107,3 +108,19 @@ dubbo:
   consumer:
     check: false # 注册失败也能启动
     retries: 3 # 重试次数
+
+# 监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    tags:
+      application: ${spring.application.name}
+  prometheus:
+    metrics:
+      export:
+        pushgateway:
+          enabled: true
+
