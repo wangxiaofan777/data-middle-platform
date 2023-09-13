@@ -24,7 +24,7 @@ hs_err_pid*
 replay_pid*
 
 **/target/**
-/config/**
+/config/*.xml
 /data/
 /logs/**
 /**/dependency-reduced-pom.xml

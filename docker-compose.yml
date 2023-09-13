@@ -8,9 +8,11 @@ services:
     image: redis:7.2.0
     container_name: redis
     hostname: redis
+    volumes:
+      - ./data/redis_data:/data
     ports:
       - "6379:6379"
-    command: redis-server /redis.conf
+#    command: redis-server /redis.conf
 
 
   mysql:
