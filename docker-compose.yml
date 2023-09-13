@@ -22,7 +22,7 @@ services:
       - "3306:3306"
     volumes:
       - ./data/mysql_data:/var/lib/mysql
-#      - ./data/mysql_log/mysqld.log:/var/log/mysqld.log
+    #      - ./data/mysql_log/mysqld.log:/var/log/mysqld.log
     environment:
       MYSQL_ROOT_PASSWORD: "root" # root密码
     networks:
@@ -134,8 +134,8 @@ services:
     restart: unless-stopped
     ports:
       - "3000:3000"
-#    volumes:
-#      - "./grafana/grafana.ini:/etc/grafana/grafana.ini" # 初始化配置（可设置一些告警邮箱等）
+    #    volumes:
+    #      - "./grafana/grafana.ini:/etc/grafana/grafana.ini" # 初始化配置（可设置一些告警邮箱等）
     environment:
       GF_EXPLORE_ENABLED: "true"
       # 初始账号密码：admin/admin
@@ -148,8 +148,27 @@ services:
     networks:
       kafka-flink-cluster-network:
         ipv4_address: 172.26.0.22
+  loki:
+    image: grafana/loki:2.8.2
+    container_name: loki
+    hostname: loki
+    ports:
+      - "3100:3100"
+    networks:
+      kafka-flink-cluster-network:
+        ipv4_address: 172.26.0.23
+  promtail:
+    image: grafana/promtail
+    container_name: promtail
+    hostname: promtail
+    volumes:
+      - ./logs:/var/log
+    networks:
+      kafka-flink-cluster-network:
+        ipv4_address: 172.26.0.24
 
-# 网桥
+
+    # 网桥
 networks:
   kafka-flink-cluster-network:
     # external: true
