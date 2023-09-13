@@ -28,3 +28,5 @@ replay_pid*
 /data/
 /logs/**
 /**/dependency-reduced-pom.xml
+/config/devops.keytab
+/config/krb5.conf

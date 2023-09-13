@@ -1,0 +1,20 @@
+
+# 可参考 https://prometheus.io/docs/prometheus/latest/getting_started
+global:
+  scrape_interval: 10s
+  scrape_timeout: 10s
+  evaluation_interval: 10m
+
+scrape_configs:
+  # prometheus
+  - job_name: prometheus
+    static_configs:
+      - targets: ['192.168.21.23:9090'] ## 修改成服务器ip即可
+        labels:
+          instance: prometheus
+  - job_name: "user-service"
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    metrics_path: '/user/actuator/prometheus'
+    static_configs:
+      - targets: ['192.168.21.23:18082']
