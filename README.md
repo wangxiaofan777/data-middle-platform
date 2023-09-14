@@ -117,13 +117,13 @@ dbfilename dump.rdb
 # Redis默认是开启压缩的。
 rdbcompression yes
 # 用户密码
-#user admin on -DEBUG +@all ~* >lygr@0907
-#requirepass lygr@0907
-#replicaof 10.50.30.177 6379
-masterauth lygr@0907
+#user admin on -DEBUG +@all ~* > 123456
+#requirepass 123456
+#replicaof 127.0.0.1= 6379
 replica-read-only no
 # 删除策略
 maxmemory-policy volatile-lru
+
 ```
 
 * 启动服务
@@ -155,4 +155,10 @@ redis-cli --cluster create 127.0.0.1:7000 127.0.0.1:7001 \
 
 ```redis
 redis-cli --cluster add-node 127.0.0.1:7006 127.0.0.1:7000
+```
+
+# 删除节点
+
+```shell
+redis-cli --cluster del-node 127.0.0.1:7006 2873e8480bbfca1b0b98621e7862f6844a6e5850
 ```
