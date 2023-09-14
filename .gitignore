@@ -24,9 +24,6 @@ hs_err_pid*
 replay_pid*
 
 **/target/**
-/config/*.xml
 /data/
 /logs/**
 /**/dependency-reduced-pom.xml
-/config/devops.keytab
-/config/krb5.conf
