@@ -64,7 +64,7 @@ public class YarnClientUtils {
     public static void main(String[] args) throws IOException, YarnException {
         System.out.println(YarnClientUtils.class.getClassLoader().getResource(""));
 
-        KerberosAuthUtils.login("C:/Users/WangMaoSong/Desktop/kerberos/139/krb5.conf", "devops@HADOOP.COM", "C:/Users/WangMaoSong/Desktop/kerberos/139/devops.keytab");
+        KerberosAuthUtils.login("C:/Users/wxf/Desktop/kerberos/139/krb5.conf", "devops@HADOOP.COM", "C:/Users/wxf/Desktop/kerberos/139/devops.keytab");
         YarnClientUtils.init();
         List<ApplicationReport> applications = YarnClientUtils.getApplications();
     }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 /**
  * Hive数据查询
  *
- * @author WangMaoSong
+ * @author wxf
  * @version 1.1.0
  * @since 2023/6/15 14:47:07
  */

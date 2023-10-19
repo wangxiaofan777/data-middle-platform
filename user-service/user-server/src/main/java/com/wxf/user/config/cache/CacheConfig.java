@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 缓存配置
  *
- * @author WangMaoSong
+ * @author wxf
  * @since 2023-10-17 15:51
  **/
 @EnableCaching

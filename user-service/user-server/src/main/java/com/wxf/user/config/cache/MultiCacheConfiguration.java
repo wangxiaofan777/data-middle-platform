@@ -7,7 +7,7 @@ import org.springframework.cache.interceptor.CacheResolver;
 import java.util.Collection;
 
 /**
- * @author WangMaoSong
+ * @author wxf
  * @since 2023-10-19 16:25
  **/
 public class MultiCacheConfiguration implements CacheResolver {

@@ -1,7 +1,7 @@
 package com.wxf;
 
 /**
- * @author WangMaoSong
+ * @author wxf
  * @since 2023-10-16 16:21
  **/
 public class TreeNode {
