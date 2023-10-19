@@ -1,4 +1,4 @@
-package com.wxf.user;
+package com.wxf.user.entity;
 
 import com.wxf.commons.enums.BaseEntity;
 import com.wxf.commons.enums.ModuleName;
