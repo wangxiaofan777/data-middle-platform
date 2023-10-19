@@ -63,6 +63,7 @@
         <module>gateway-service</module>
         <module>monitor-service</module>
         <module>auth-service</module>
+        <module>Test</module>
     </modules>
 
 

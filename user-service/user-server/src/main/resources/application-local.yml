@@ -39,31 +39,63 @@ spring:
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
-  security:
-    oauth2:
-      client:
-        registration:
-          auth_service:
-            provider: auth_provider
-            client-id: "user_service_id"
-            client-secret: "user_service_secret"
-            client-authentication-method: "client_secret_post"
-            authorization-grant-type: "authorization_code"
-            redirect-uri: "https://www.baidu.com"
-            scope:
-              - "all"
-            client-name: "user_service"
+  cache:
+    type: caffeine
+  data:
+    redis:
+#      url: redis://user:password@localhost:6379
+      host: localhost
+      port: 6379
+      database: 0
+#      username: admin
+#      password: admin
+      timeout: 60s
+      connect-timeout: 60s
+      client-name: user_redis_client
+      client-type: lettuce
+      lettuce:
+        shutdown-timeout: 100ms
+        cluster:
+          refresh:
+            adaptive: true
+            dynamic-refresh-sources: true
+            period: 60s
+        pool:
+          enabled: true
+          max-idle: 10 # 连接池中最大空闲连接
+          min-idle: 5 # 连接池中最小空闲连接
+          max-active: 100 # 最大连接数。-1表示不限制
+          max-wait: 60s # 最大阻塞时间。-1表示不限制
+          time-between-eviction-runs: 1s  # 逐出空闲连接的时间间隔
 
-        #          github:
-        #            client-id: Iv1.2ca5be8c36b99a36
-        #            client-secret: aef8ff70890349d77d76b9bcf513ef2ba422771d
-        #            redirect-uri: https://www.baidu.com
 
-        provider:
-          auth_provider:
-            authorization-uri: "http://127.0.0.1:9909/auth/oauth2/authorize"
-            token-uri: "http://127.0.0.1:9909/auth/oauth2/token"
-            user-info-uri: "http://127.0.0.1:9909/auth/oauth2/userinfo"
+
+
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          auth_service:
+#            provider: auth_provider
+#            client-id: "user_service_id"
+#            client-secret: "user_service_secret"
+#            client-authentication-method: "client_secret_post"
+#            authorization-grant-type: "authorization_code"
+#            redirect-uri: "https://www.baidu.com"
+#            scope:
+#              - "all"
+#            client-name: "user_service"
+#
+#        #          github:
+#        #            client-id: Iv1.2ca5be8c36b99a36
+#        #            client-secret: aef8ff70890349d77d76b9bcf513ef2ba422771d
+#        #            redirect-uri: https://www.baidu.com
+#
+#        provider:
+#          auth_provider:
+#            authorization-uri: "http://127.0.0.1:9909/auth/oauth2/authorize"
+#            token-uri: "http://127.0.0.1:9909/auth/oauth2/token"
+#            user-info-uri: "http://127.0.0.1:9909/auth/oauth2/userinfo"
 #            user-info-authentication-method: "post"
 #            user-name-attribute: "username"
 #            jwk-set-uri: "http://127.0.0.1:9909/auth/oauth2/certs"
