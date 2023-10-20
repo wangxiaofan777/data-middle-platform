@@ -1,6 +1,6 @@
 spring:
   application:
-    name: user
+    name: user-service
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:local}
   cloud:
@@ -21,12 +21,9 @@ spring:
         service: ${spring.application.name}-service
         log-name: ${spring.application.name}-nacos.log
         register-enabled: true
-        metadata:
-          service.name: ${spring.application.name}
-          service.version: 1.0
       config:
         # 开启配置中心，默认为true
-        enabled: true
+        enabled: false
         enable-remote-sync-config: true
         # 配置扩展
         file-extension: yml
@@ -45,8 +42,3 @@ spring:
           - data-id: ${spring.cloud.nacos.config.prefix}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
             group: ${spring.profiles.active}
             refresh: true
-    loadbalancer:
-      enabled: true
-
-system-service:
-  ribbon:

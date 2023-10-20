@@ -1,4 +1,4 @@
-package com.wxf.user;
+package com.wxf.user.controller;
 
 import io.micrometer.core.annotation.Timed;
 import org.springframework.http.ResponseEntity;

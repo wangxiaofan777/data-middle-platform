@@ -38,7 +38,7 @@
         <spark.version>3.1.2</spark.version>
         <janino.version>3.0.8</janino.version>
         <logging.version>2.19.0</logging.version>
-        <nacos-client.version>2.2.4</nacos-client.version>
+        <nacos-client.version>1.4.1</nacos-client.version>
         <dubbo.version>3.2.5</dubbo.version>
         <redisson.version>3.23.4</redisson.version>
 

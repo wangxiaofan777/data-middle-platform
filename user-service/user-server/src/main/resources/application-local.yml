@@ -6,7 +6,7 @@ server:
 
 spring:
   application:
-    name: user-service
+    name: user
   sql:
     init:
       mode: always

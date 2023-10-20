@@ -10,9 +10,12 @@ spring:
       enabled: true
       routes:
         - id: user_service
-          uri: http://localhost:18082
+#          uri: http://localhost:18082
+          uri: lb://user-service
           predicates:
             - Path=/user/**
+#          filters:
+#            - StripPrefix=1
 #      discovery:
 #        locator:
 #          enabled: true   # 是否自动识别服务发现标识
