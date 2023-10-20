@@ -4,6 +4,38 @@ version: "3.8"
 # flink: - job manager 172.26.0.20
 #        - task manager(s) random assigment in 172.26.0.0/24
 services:
+  nacos:
+    image: nacos/nacos-server:v2.2.3
+    container_name: nacos
+    environment:
+      - PREFER_HOST_MODE=ip
+      - MODE=standalone
+      - SPRING_DATASOURCE_PLATFORM=mysql
+      - MYSQL_DATABASE_NUM=1
+      - MYSQL_SERVICE_HOST=mysql
+      - MYSQL_SERVICE_DB_NAME=nacos
+      - MYSQL_SERVICE_PORT=3306
+      - MYSQL_SERVICE_USER=root
+      - MYSQL_SERVICE_PASSWORD=root
+      - MYSQL_SERVICE_DB_PARAM=characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - JVM_XMS=128m
+      - JVM_XMX=128m
+      - JVM_XMN=64m
+      - JVM_MS=16m
+      - JVM_MMS=32m
+      - NACOS_AUTH_ENABLE=true
+      - NACOS_AUTH_SYSTEM_TYPE=nacos
+      - NACOS_AUTH_IDENTITY_KEY=2222
+      - NACOS_AUTH_IDENTITY_VALUE=2xxx
+      - NACOS_AUTH_TOKEN=SecretKey012345678901234567890123456789012345678901234567890123456789
+    volumes:
+      - ./data/nacos_data/logs:/home/nacos/logs
+#      - ./data/nacos_data/conf:/home/nacos/conf
+    ports:
+      - "8848:8848"
+    networks:
+      kafka-flink-cluster-network:
+        ipv4_address: 172.26.0.25
   redis:
     image: redis:7.2.0
     container_name: redis
