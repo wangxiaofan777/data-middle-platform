@@ -1,0 +1,20 @@
+cluster.name: es-cluster
+node.name: es00
+node.master: true
+node.data: true
+path.data: /usr/share/elasticsearch/data
+path.logs: /usr/share/elasticsearch/logs
+bootstrap.memory_lock: true
+network.host: 0.0.0.0
+http.port: 9200
+# transport.tcp.port: [9300,9302,9303,9304,9305]
+# discovery.zen.ping.unicast.hosts: ["es01","es02","es03","es04","es05"]
+cluster.initial_master_nodes: ["es00"]
+discovery.seed_hosts: ["es00"]
+
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+
+xpack.security.enabled: false
+xpack.security.transport.ssl.enabled: false
+

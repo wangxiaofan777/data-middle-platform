@@ -4,6 +4,51 @@ version: "3.8"
 # flink: - job manager 172.26.0.20
 #        - task manager(s) random assigment in 172.26.0.0/24
 services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    hostname: mongodb
+    restart: on-failure
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./config/mongo_config/config:/etc/mongo
+      - ./data/mongo_data/data:/data/db
+      - ./data/mongo_data/logs:/var/log/mongodb
+  mongodb-express:
+    image: mongo-express
+    container_name: mongo-express
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=admin
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+    restart: on-failure
+    ports:
+      - "8081:8081"
+
+  elasticsearch:
+    image: elasticsearch:8.10.2
+    container_name: elasticsearch
+    environment:
+      - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./data/es_data/data:/usr/share/elasticsearch/data
+      - ./data/es_data/logs:/usr/share/elasticsearch/logs
+#      - ./config/es_config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      kafka-flink-cluster-network:
+        ipv4_address: 172.26.0.26
+
   nacos:
     image: nacos/nacos-server:v2.2.3
     container_name: nacos

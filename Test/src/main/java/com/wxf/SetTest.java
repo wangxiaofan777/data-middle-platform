@@ -1,9 +1,13 @@
 package com.wxf;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.Set;
+import java.util.Stack;
 import java.util.TreeSet;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author wxf
@@ -12,6 +16,12 @@ import java.util.TreeSet;
 public class SetTest {
 
     public static void main(String[] args) {
+
+        ArrayList<Integer> arrayList = new ArrayList<>();
+//        arrayList.toArray();
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        Stack<Integer> stack = new Stack<>();
+        ConcurrentHashMap<String, Object> concurrentHashMap = new ConcurrentHashMap<>();
 
 
         Set<Integer> treeSet = new TreeSet<>();
