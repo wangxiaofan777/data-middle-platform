@@ -41,6 +41,9 @@
         <nacos-client.version>1.4.1</nacos-client.version>
         <dubbo.version>3.2.5</dubbo.version>
         <redisson.version>3.23.4</redisson.version>
+        <sharding-jdbc.version>4.1.1</sharding-jdbc.version>
+        <redisson-spring.version>3.24.1</redisson-spring.version>
+
 
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
     </properties>
@@ -272,6 +275,14 @@
                 <version>${guava.version}</version>
             </dependency>
 
+            <!-- redisson-spring-boot-starter -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson-spring.version}</version>
+            </dependency>
+
+
             <!-- redisson -->
             <dependency>
                 <groupId>org.redisson</groupId>
@@ -279,6 +290,12 @@
                 <version>${redisson.version}</version>
             </dependency>
 
+            <!-- sharding-jdbc-spring-boot-starter -->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+                <version>${sharding-jdbc.version}</version>
+            </dependency>
 
             <!--大数据相关依赖-->
             <!-- hadoop-common -->
