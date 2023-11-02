@@ -1,4 +1,4 @@
-package com.oceanum.labeling;
+package com.wxf;
 
 /**
  * Hello world!

@@ -68,6 +68,7 @@
         <module>monitor-service</module>
         <module>auth-service</module>
         <module>Test</module>
+        <module>datasource-service/datasource-plugin-mongo</module>
     </modules>
 
 

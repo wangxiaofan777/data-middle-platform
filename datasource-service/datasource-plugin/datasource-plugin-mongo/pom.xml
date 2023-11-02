@@ -2,16 +2,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.wxf.datasource.plugin</groupId>
-        <artifactId>datasource-plugin</artifactId>
+        <groupId>com.wxf</groupId>
+        <artifactId>data-middle-platform</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.wxf</groupId>
-    <artifactId>datasource-plugin-elasticsearch</artifactId>
+    <artifactId>datasource-plugin-mongo</artifactId>
     <packaging>jar</packaging>
 
-    <name>datasource-plugin-elasticsearch</name>
+    <name>datasource-plugin-mongo</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
