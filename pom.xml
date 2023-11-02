@@ -43,6 +43,7 @@
         <redisson.version>3.23.4</redisson.version>
         <sharding-jdbc.version>4.1.1</sharding-jdbc.version>
         <redisson-spring.version>3.24.1</redisson-spring.version>
+        <druid.version>1.2.20</druid.version>
 
 
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
@@ -282,7 +283,6 @@
                 <version>${redisson-spring.version}</version>
             </dependency>
 
-
             <!-- redisson -->
             <dependency>
                 <groupId>org.redisson</groupId>
@@ -296,6 +296,14 @@
                 <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
                 <version>${sharding-jdbc.version}</version>
             </dependency>
+
+            <!-- druid -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
 
             <!--大数据相关依赖-->
             <!-- hadoop-common -->

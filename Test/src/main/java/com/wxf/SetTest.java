@@ -8,6 +8,9 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.concurrent.ConcurrentSkipListSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author wxf
@@ -22,6 +25,9 @@ public class SetTest {
         LinkedList<Integer> linkedList = new LinkedList<>();
         Stack<Integer> stack = new Stack<>();
         ConcurrentHashMap<String, Object> concurrentHashMap = new ConcurrentHashMap<>();
+        CopyOnWriteArrayList<Integer> copyOnWriteArrayList = new CopyOnWriteArrayList<>();
+        ConcurrentSkipListSet<Integer> concurrentSkipListSet = new ConcurrentSkipListSet<>();
+        ConcurrentSkipListMap<String, Integer> concurrentSkipListMap = new ConcurrentSkipListMap<>();
 
 
         Set<Integer> treeSet = new TreeSet<>();

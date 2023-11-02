@@ -4,6 +4,20 @@ version: "3.8"
 # flink: - job manager 172.26.0.20
 #        - task manager(s) random assigment in 172.26.0.0/24
 services:
+  minio:
+    container_name: minio
+    image: minio/minio
+    restart: on-failure
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./data/minio_data/data:/data
+      - ./data/minio_data/config:/root/.minio
+    command: server --console-address ":9001" /data
+    environment:
+      - MINIO_ACCESS_KEY=admin
+      - MINIO_SECRET_KEY=admin123
   mongodb:
     image: mongo
     container_name: mongodb

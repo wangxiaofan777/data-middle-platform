@@ -12,6 +12,7 @@ import lombok.experimental.SuperBuilder;
 import java.io.Serializable;
 
 /**
+ * 日志信息
  * @author Wxf
  * @since 2023-10-19 20:49:15
  **/
