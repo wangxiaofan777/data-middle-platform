@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.wxf.user.entity.LogInfo;
 import com.wxf.user.mapper.LogInfoMapper;
 import com.wxf.user.service.LogInfoService;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,12 +18,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class LogInfoServiceImpl extends ServiceImpl<LogInfoMapper, LogInfo> implements LogInfoService {
 
-    //    @Cacheable("logInfo")
+    @Cacheable(key = "#id", value = "log_info")
     @Override
     public LogInfo getLogInfoByd(Long id) {
         return this.baseMapper.selectById(id);
     }
 
+    @CachePut(key = "#logInfo.id", value = "log_info")
     @Transactional(rollbackFor = Exception.class)
     @Override
     public boolean addLogInfo(LogInfo logInfo) {

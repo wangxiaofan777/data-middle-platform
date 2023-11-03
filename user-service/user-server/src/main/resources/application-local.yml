@@ -43,12 +43,12 @@ spring:
     type: caffeine
   data:
     redis:
-#      url: redis://user:password@localhost:6379
+      #      url: redis://user:password@localhost:6379
       host: localhost
       port: 6379
       database: 0
-#      username: admin
-#      password: admin
+      #      username: admin
+      #      password: admin
       timeout: 60s
       connect-timeout: 60s
       client-name: user_redis_client
@@ -116,6 +116,12 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     # 打印SQL
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 是否开启二级缓存，默认为true
+    cache-enabled: false
+    # 本地缓存范围 session：会话级别；statement：只对这个查询有效
+    local-cache-scope: session
+    # 是否对空值进行缓存
+    call-setters-on-nulls: true
 
 # 日志
 logging:
