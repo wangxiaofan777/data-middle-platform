@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @MapperScan(basePackages = {
-        "com.wxf.tenant.mapper"
+        "com.wxf.user.mapper"
 })
 public class MybatisPlusConfig {
 

@@ -5,6 +5,7 @@ import org.redisson.api.RHyperLogLog;
 import org.redisson.api.RKeys;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
+import org.redisson.client.codec.Codec;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.locks.Lock;
@@ -83,6 +84,11 @@ public class RedissonUtils {
         return this.redissonClient.getBloomFilter(key);
     }
 
+    public RBloomFilter<Object> getBloomFilter(String key, Codec codec) {
+        return this.redissonClient.getBloomFilter(key, codec);
+    }
+
+
     public RHyperLogLog<Object> getHyperLogLogs(String key) {
         return this.redissonClient.getHyperLogLog(key);
     }
@@ -95,5 +101,6 @@ public class RedissonUtils {
     public RKeys getKeys() {
         return this.redissonClient.getKeys();
     }
+
 
 }
