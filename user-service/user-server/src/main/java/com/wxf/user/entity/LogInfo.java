@@ -1,5 +1,8 @@
 package com.wxf.user.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.wxf.commons.enums.BaseEntity;
 import com.wxf.commons.enums.ModuleName;
 import com.wxf.commons.enums.ServiceName;
@@ -21,7 +24,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@TableName
 public class LogInfo extends BaseEntity implements Serializable {
+
+    @TableId(type = IdType.ASSIGN_ID)
+    private Long id;
 
     // 用户ID
     private Long userId;

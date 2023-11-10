@@ -21,6 +21,33 @@ spring:
       max-request-size: 100MB # 总数据大小
   main:
     allow-bean-definition-overriding: true # 允许重复定义Bean
+  cloud:
+    openfeign:
+      # 懒加载
+      lazy-attributes-resolution: true
+      httpclient:
+        hc5:
+          # 启用httpclient5
+          enabled: false
+          connection-request-timeout: 30
+          connection-request-timeout-unit: seconds
+        time-to-live-unit: seconds
+        max-connections: 200
+        max-connections-per-route: 50
+      circuitbreaker:
+        # 降级
+        enabled: true
+      client:
+        refresh-enabled: true
+      compression:
+        request:
+          # 请求开启压缩
+          enabled: true
+          mime-types:
+            - "text/xml"
+            - "application/xml"
+            - "application/json"
+          min-request-size: 2048
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/user_service?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&useIPv6=false
     username: root
@@ -117,9 +144,9 @@ mybatis-plus:
     # 打印SQL
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     # 是否开启二级缓存，默认为true
-#    cache-enabled: false
+    #    cache-enabled: false
     # 本地缓存范围 session：会话级别；statement：只对这个查询有效
-#    local-cache-scope: session
+    #    local-cache-scope: session
     # 是否对空值进行缓存
 #    call-setters-on-nulls: true
 
@@ -145,6 +172,7 @@ dubbo:
   consumer:
     check: false # 注册失败也能启动
     retries: 3 # 重试次数
+
 
 # 监控
 management:
