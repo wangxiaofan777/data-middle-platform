@@ -8,6 +8,9 @@ spring:
   cloud:
     gateway:
       enabled: true
+      loadbalancer:
+        # 是否启用404
+        use404: true
       routes:
         - id: user_service
 #          uri: http://localhost:18082
@@ -19,4 +22,7 @@ spring:
 #      discovery:
 #        locator:
 #          enabled: true   # 是否自动识别服务发现标识
-
+logging:
+  config: classpath:logback.xml
+  charset:
+    console: utf-8

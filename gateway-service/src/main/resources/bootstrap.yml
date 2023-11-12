@@ -42,3 +42,9 @@ spring:
           - data-id: ${spring.cloud.nacos.config.prefix}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
             group: ${spring.profiles.active}
             refresh: true
+
+
+logging:
+  config: classpath:logback.xml
+  charset:
+    console: utf-8
