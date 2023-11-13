@@ -39,7 +39,20 @@ spring:
         enabled: true
       client:
         refresh-enabled: true
+        config:
+          default:
+            # connect超市超时
+            connect-timeout: 5000
+            # 读取超时时间
+            read-timeout: 500
+            # 调用日志。none：关闭日志；basic：状态码和调用时间；header：请求和响应头；full：请求和相应的请求头、body和元数据
+            logger-level: basic
+            micrometer:
+              enabled: true
       compression:
+        response:
+          # 开启响应压缩
+          enabled: true
         request:
           # 请求开启压缩
           enabled: true
@@ -48,6 +61,15 @@ spring:
             - "application/xml"
             - "application/json"
           min-request-size: 2048
+      autoconfiguration:
+        jackson:
+          # 是否启用jackson
+          enabled: true
+      oauth2:
+        # 客户端名称
+        clientRegistrationId: ${spring.application.name}
+        # 是否开启oauth2
+        enabled: false
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/user_service?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&useIPv6=false
     username: root
@@ -186,6 +208,6 @@ management:
   prometheus:
     metrics:
       export:
-        pushgateway:
+        gateway:
           enabled: true
 
