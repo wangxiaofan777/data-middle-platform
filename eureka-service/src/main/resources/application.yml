@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: eureka-service
+  profiles:
+    active: dev
+
+logging:
+  charset:
+    console: utf-8
+  config: classpath:logback-spring.xml

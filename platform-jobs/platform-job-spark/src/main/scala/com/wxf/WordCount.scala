@@ -26,7 +26,7 @@ object WordCount {
       .map(word => (word, 1))
       .reduceByKey(_ + _)
 
-    val result: Array[(String, Int)] = countRdd.sortBy(_._2)
+    val result: Array[(String, Int)] = countRdd.sortByKey(false)
       .top(5)
 
 

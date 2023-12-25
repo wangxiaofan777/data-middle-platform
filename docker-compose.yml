@@ -61,6 +61,7 @@ services:
   elasticsearch:
     image: elasticsearch:8.10.2
     container_name: elasticsearch
+    restart: on-failure
     environment:
       - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
     ulimits:
