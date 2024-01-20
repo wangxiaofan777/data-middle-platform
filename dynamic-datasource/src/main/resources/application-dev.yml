@@ -1,0 +1,30 @@
+server:
+  port:8099
+
+spring:
+  application:
+    name: dynamic_datasource
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/dynamic_datasource_master?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&useIPv6=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 500
+      max-lifetime: 18000000
+      minimum-idle: 30
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+      pool-name: HiKariDataSource
+      type: com.zaxxer.hikari.HikariDataSource
+      idle-timeout: 180000
+      auto-commit: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+# 日志
+logging:
+  config: classpath:log4j2-spring.xml
+  charset:
+    console: UTF-8

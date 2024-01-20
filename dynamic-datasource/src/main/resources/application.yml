@@ -1,0 +1,10 @@
+server:
+  port:8099
+
+spring:
+  application:
+    name: dynamic_datasource
+  profiles:
+    active: dev
+
+

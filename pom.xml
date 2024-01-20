@@ -70,6 +70,7 @@
         <module>auth-service</module>
         <module>Test</module>
         <module>eureka-service</module>
+        <module>dynamic-datasource</module>
     </modules>
 
 

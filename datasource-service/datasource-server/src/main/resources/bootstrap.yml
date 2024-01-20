@@ -6,7 +6,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        enabled: true # 开启服务发现
+        enabled: false # 开启服务发现
         server-addr: ${spring.cloud.nacos.config.server-addr}
         # 用户名
         username: ${spring.cloud.nacos.config.username}
@@ -32,7 +32,7 @@ spring:
         ip-delete-timeout: 9
       config:
         # 开启配置中心，默认为true
-        enabled: true
+        enabled: false
         enable-remote-sync-config: true
         # 配置扩展
         file-extension: yml
