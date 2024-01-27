@@ -1,11 +1,10 @@
 package com.wxf.dynamic.datasource;
 
+import com.wxf.dynamic.datasource.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-
-import javax.sql.DataSource;
 
 /**
  * 数据源测试
@@ -17,8 +16,11 @@ import javax.sql.DataSource;
 @SpringBootTest
 public class DataSourceTest {
 
+    @Autowired
+    private UserServiceImpl userService;
+
     @Test
-    void create() {
-        DataSource dataSource = DataSourceBuilder.create().build();
+    public void test() {
+        System.out.println(this.userService.getUserList());
     }
 }

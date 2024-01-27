@@ -16,7 +16,7 @@
         <spring-cloud.version>2023.0.0</spring-cloud.version>
         <spring-cloud-alibaba.version>2022.0.0.0-RC2</spring-cloud-alibaba.version>
         <mysql.version>8.0.33</mysql.version>
-        <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
+        <mybatis-plus.version>3.5.5</mybatis-plus.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-langs3.version>3.12.0</commons-langs3.version>
         <fastjson.version>2.0.35</fastjson.version>

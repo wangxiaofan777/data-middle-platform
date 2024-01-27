@@ -9,6 +9,16 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+    ds1:
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/ds1?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&useIPv6=false
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    ds2:
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/ds2?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&useIPv6=false
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       maximum-pool-size: 500
       max-lifetime: 18000000
@@ -22,6 +32,23 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+
+# Mybatis Plus 配置
+mybatis-plus:
+  mapper-locations: claspath:/mapper/*.xml
+  type-aliases-package: com.wxf.dynamic.datasource.entity
+  check-config-location: true # 是否xml是否存在
+  global-config:
+    db-config:
+      id-type: assign_id # 默认使用雪花ID
+      logic-delete-field: deleted # 是否逻辑删除
+      logic-delete-value: 1  # 逻辑删除：是
+      logic-not-delete-value: 0 # 逻辑删除：否
+  configuration:
+    map-underscore-to-camel-case: true # 启用驼峰命名
+    default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 控制台打印日志
+
 
 # 日志
 logging:
