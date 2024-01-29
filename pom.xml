@@ -45,6 +45,8 @@
         <redisson-spring.version>3.24.1</redisson-spring.version>
         <druid.version>1.2.20</druid.version>
         <rocketmq.version>2.2.3</rocketmq.version>
+        <mybatis-spring-boot.version>3.0.3</mybatis-spring-boot.version>
+        <mybatis-spring.version>3.0.3</mybatis-spring.version>
 
 
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
@@ -323,8 +325,20 @@
             </dependency>
 
 
+            <!-- mybatis-spring-boot-starter -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot.version}</version>
+            </dependency>
 
-
+            <!-- mybatis-spring -->
+            <!--修改版本，否则无法找到相应的对象-->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${mybatis-spring.version}</version>
+            </dependency>
 
 
 

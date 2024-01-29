@@ -41,7 +41,6 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>3.0.3</version>
         </dependency>
 
 
@@ -58,10 +57,10 @@
         </dependency>
 
         <!-- mybatis-spring -->
+        <!--修改版本，否则无法找到相应的对象-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
-            <version>3.0.3</version>
         </dependency>
 
         <!-- spring-boot-starter-aop -->
@@ -69,7 +68,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-
 
 
         <dependency>
