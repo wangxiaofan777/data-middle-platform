@@ -47,6 +47,7 @@
         <rocketmq.version>2.2.3</rocketmq.version>
         <mybatis-spring-boot.version>3.0.3</mybatis-spring-boot.version>
         <mybatis-spring.version>3.0.3</mybatis-spring.version>
+        <knife4j-spring-boot.version>3.0.3</knife4j-spring-boot.version>
 
 
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
@@ -73,6 +74,8 @@
         <module>Test</module>
         <module>eureka-service</module>
         <module>dynamic-datasource</module>
+        <module>rocketmq-service</module>
+        <module>kafka-service</module>
     </modules>
 
 
@@ -339,6 +342,14 @@
                 <artifactId>mybatis-spring</artifactId>
                 <version>${mybatis-spring.version}</version>
             </dependency>
+
+            <!-- knife4j-spring-boot-starter -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j-spring-boot.version}</version>
+            </dependency>
+
 
 
 
