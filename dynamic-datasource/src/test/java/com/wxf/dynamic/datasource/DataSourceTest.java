@@ -23,4 +23,14 @@ public class DataSourceTest {
     public void test() {
         System.out.println(this.userService.getUserList());
     }
+
+    @Test
+    void getUserListByDs1() {
+        System.out.println(this.userService.getUserListByDs1());
+    }
+
+    @Test
+    void getUserListByDs2() {
+        System.out.println(this.userService.getUserListByDs2());
+    }
 }

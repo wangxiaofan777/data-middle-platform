@@ -1,12 +1,6 @@
 package com.wxf.dynamic.datasource.config.datasource;
 
-import com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties;
-import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -29,9 +23,6 @@ import java.util.Map;
  **/
 @Configuration
 public class DatasourceConfig {
-
-//    @Autowired
-//    private MybatisPlusProperties mybatisPlusProperties;
 
 
     @Bean
