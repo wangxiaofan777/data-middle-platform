@@ -1,0 +1,56 @@
+server:
+  port: 8080
+
+
+spring:
+  application:
+    name: kafka-server
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      acks: -1 # 应答级别
+      batch-size: 16384 # 批量大小
+      retries: 3 # 重试次数
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      buffer-memory: 33554432 # 缓冲区大小
+      client-id: kafka-server # 客户端ID
+      properties:
+        linger:
+          ms: 2000 # 延迟提交
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: tp_grp_01
+      client-id: kafka-server-consumer-id
+      enable-auto-commit: true # 是否自动提交偏移量
+      auto-commit-interval: 20000 # 延时提交offset
+      auto-offset-reset: earliest
+      max-poll-records: 1000 # 最大拉去数据
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      heartbeat-interval: 2000 # 心跳间隔
+      properties:
+        session:
+          timeout:
+            ms: 1200000 # 消费者会话超时时间(超过这个时间会断开连接，触发rebalance)
+        request:
+          timeout:
+            ms: 18000 # 请求消费超时时间
+    listener:
+      ack-mode: batch # 批量消费
+      concurrency: 4 # 并发度
+      poll-timeout: 2s
+      idleBetweenPolls: 2s
+
+
+
+
+
+# 日志
+logging:
+  config: classpath:logback-spring.xml
+  charset:
+    console: UTF-8
+    file: UTF-8
+  file:
+    path: ./logs
