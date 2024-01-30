@@ -76,6 +76,7 @@
         <module>dynamic-datasource</module>
         <module>rocketmq-service</module>
         <module>kafka-service</module>
+        <module>netty-test</module>
     </modules>
 
 

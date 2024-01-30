@@ -5,25 +5,27 @@
         <groupId>com.wxf</groupId>
         <artifactId>data-middle-platform</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.wxf.datasource.plugin</groupId>
-    <artifactId>datasource-plugin</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>netty-test</artifactId>
+    <packaging>jar</packaging>
 
-    <name>datasource-plugin</name>
-
-    <modules>
-        <module>datasource-plugin-elasticsearch</module>
-        <module>datasource-plugin-mongo</module>
-    </modules>
+    <name>netty-test</name>
 
     <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+
     <dependencies>
+        <!-- netty-all -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+        </dependency>
+
 
     </dependencies>
 </project>

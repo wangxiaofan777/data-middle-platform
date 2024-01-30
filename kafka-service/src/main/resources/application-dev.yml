@@ -1,5 +1,11 @@
 server:
   port: 8080
+  http2:
+    enabled: true # 开启http2
+  servlet:
+    context-path: /kafka-server
+  shutdown: graceful # 优雅停机
+
 
 
 spring:
