@@ -3,6 +3,7 @@ package com.wxf.netty.test.server;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -16,13 +17,18 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 public class ServerMain {
 
     public static void main(String[] args) {
-        NioEventLoopGroup group = new NioEventLoopGroup();
+        NioEventLoopGroup boss = new NioEventLoopGroup(1);
+        NioEventLoopGroup worker = new NioEventLoopGroup(Runtime.getRuntime().availableProcessors() * 2);
 
         try {
             ServerBootstrap b = new ServerBootstrap();
 
-            b.group(group)
+            b.group(boss, worker)
                     .channel(NioServerSocketChannel.class)
+                    // 线程队列中等待个数
+                    .option(ChannelOption.SO_BACKLOG, 128)
+                    // 开启keepalive检查
+                    .childOption(ChannelOption.SO_KEEPALIVE, true)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
@@ -35,7 +41,8 @@ public class ServerMain {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            group.shutdownGracefully();
+            boss.shutdownGracefully();
+            worker.shutdownGracefully();
         }
     }
 }
