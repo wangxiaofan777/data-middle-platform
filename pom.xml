@@ -43,7 +43,7 @@
         <redisson.version>3.23.4</redisson.version>
         <sharding-jdbc.version>4.1.1</sharding-jdbc.version>
         <redisson-spring.version>3.24.1</redisson-spring.version>
-        <druid.version>1.2.20</druid.version>
+        <druid.version>1.2.21</druid.version>
         <rocketmq.version>2.2.3</rocketmq.version>
         <mybatis-spring-boot.version>3.0.3</mybatis-spring-boot.version>
         <mybatis-spring.version>3.0.3</mybatis-spring.version>
@@ -77,6 +77,7 @@
         <module>rocketmq-service</module>
         <module>kafka-service</module>
         <module>netty-test</module>
+        <module>druid-service</module>
     </modules>
 
 
