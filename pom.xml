@@ -48,6 +48,7 @@
         <mybatis-spring-boot.version>3.0.3</mybatis-spring-boot.version>
         <mybatis-spring.version>3.0.3</mybatis-spring.version>
         <knife4j-spring-boot.version>3.0.3</knife4j-spring-boot.version>
+        <httpclient5.version>5.3.1</httpclient5.version>
 
 
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
@@ -350,6 +351,13 @@
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-spring-boot-starter</artifactId>
                 <version>${knife4j-spring-boot.version}</version>
+            </dependency>
+
+            <!-- httpclient5 -->
+            <dependency>
+                <groupId>org.apache.httpcomponents.client5</groupId>
+                <artifactId>httpclient5</artifactId>
+                <version>${httpclient5.version}</version>
             </dependency>
 
 
