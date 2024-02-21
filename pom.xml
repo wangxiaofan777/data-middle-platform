@@ -49,6 +49,7 @@
         <mybatis-spring.version>3.0.3</mybatis-spring.version>
         <knife4j-spring-boot.version>3.0.3</knife4j-spring-boot.version>
         <httpclient5.version>5.3.1</httpclient5.version>
+        <pdfbox.version>3.0.1</pdfbox.version>
 
 
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
@@ -79,6 +80,7 @@
         <module>kafka-service</module>
         <module>netty-test</module>
         <module>druid-service</module>
+        <module>pdf-service</module>
     </modules>
 
 
@@ -358,6 +360,13 @@
                 <groupId>org.apache.httpcomponents.client5</groupId>
                 <artifactId>httpclient5</artifactId>
                 <version>${httpclient5.version}</version>
+            </dependency>
+
+            <!-- pdfbox -->
+            <dependency>
+                <groupId>org.apache.pdfbox</groupId>
+                <artifactId>pdfbox</artifactId>
+                <version>${pdfbox.version}</version>
             </dependency>
 
 
