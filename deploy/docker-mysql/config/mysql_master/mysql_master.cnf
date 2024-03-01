@@ -1,0 +1,9 @@
+[mysqld]
+# 开启二进制日志
+log-bin = mysql-bin
+# 服务ID，必须唯一
+server-id = 1
+#不同步的数据库，可设置多个
+binlog-ignore-db = information_schema
+binlog-ignore-db = performance_schema
+binlog-ignore-db = mysql

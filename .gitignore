@@ -27,3 +27,4 @@ replay_pid*
 /data/
 /logs/**
 /**/dependency-reduced-pom.xml
+/deploy/docker-mysql/data/

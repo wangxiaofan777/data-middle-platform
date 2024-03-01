@@ -1,0 +1,10 @@
+[mysqld]
+relay-log = relay-bin
+# 服务ID，必须唯一
+server-id = 3
+#不同步的数据库，可设置多个
+replicate-ignore-db = mysql
+replicate-ignore-db = information_schema
+replicate-ignore-db = performance_schema
+#是否只读,1 代表只读, 0 代表读写
+read-only = 1
