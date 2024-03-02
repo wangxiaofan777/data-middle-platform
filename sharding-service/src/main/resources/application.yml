@@ -1,0 +1,27 @@
+server:
+  port: 8092
+  shutdown: graceful # 优雅停机
+spring:
+  application:
+    name: sharding-service
+  shardingsphere:
+    datasource:
+      names: mysql_master,mysql_slave01,mysql_slave02
+      mysql_master:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/test
+        username: root
+        password: root
+      mysql_slave01:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3307/test
+        username: root
+        password: root
+      mysql_slave02:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3308/test
+        username: root
+        password: root

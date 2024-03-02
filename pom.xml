@@ -12,7 +12,7 @@
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot.version>3.2.1</spring-boot.version>
+        <spring-boot.version>3.2.3</spring-boot.version>
         <spring-cloud.version>2023.0.0</spring-cloud.version>
         <spring-cloud-alibaba.version>2022.0.0.0-RC2</spring-cloud-alibaba.version>
         <mysql.version>8.0.33</mysql.version>
@@ -41,7 +41,6 @@
         <nacos-client.version>1.4.1</nacos-client.version>
         <dubbo.version>3.2.5</dubbo.version>
         <redisson.version>3.23.4</redisson.version>
-        <sharding-jdbc.version>4.1.1</sharding-jdbc.version>
         <redisson-spring.version>3.24.1</redisson-spring.version>
         <druid.version>1.2.21</druid.version>
         <rocketmq.version>2.2.3</rocketmq.version>
@@ -50,7 +49,7 @@
         <knife4j-spring-boot.version>3.0.3</knife4j-spring-boot.version>
         <httpclient5.version>5.3.1</httpclient5.version>
         <pdfbox.version>3.0.1</pdfbox.version>
-
+        <shardingsphere-jdbc-core.version>5.2.1</shardingsphere-jdbc-core.version>
 
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
     </properties>
@@ -81,6 +80,7 @@
         <module>netty-test</module>
         <module>druid-service</module>
         <module>pdf-service</module>
+        <module>sharding-service</module>
     </modules>
 
 
@@ -303,13 +303,6 @@
                 <version>${redisson.version}</version>
             </dependency>
 
-            <!-- sharding-jdbc-spring-boot-starter -->
-            <dependency>
-                <groupId>org.apache.shardingsphere</groupId>
-                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
-                <version>${sharding-jdbc.version}</version>
-            </dependency>
-
             <!-- druid -->
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -370,6 +363,12 @@
             </dependency>
 
 
+            <!-- shardingsphere-jdbc-core-spring-boot-starter -->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+                <version>${shardingsphere-jdbc-core.version}</version>
+            </dependency>
 
 
             <!--大数据相关依赖-->

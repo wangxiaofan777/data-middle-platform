@@ -1,4 +1,4 @@
-package com.wxf.dynamic.datasource;
+package com.wxf.dynamic.datasource.enums;
 
 /**
  * 数据源名称
