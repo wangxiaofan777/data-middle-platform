@@ -50,6 +50,7 @@
         <httpclient5.version>5.3.1</httpclient5.version>
         <pdfbox.version>3.0.1</pdfbox.version>
         <shardingsphere-jdbc-core.version>5.2.1</shardingsphere-jdbc-core.version>
+        <jsqlparser.version>4.8</jsqlparser.version>
 
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
     </properties>
@@ -689,6 +690,13 @@
                 <artifactId>snakeyaml</artifactId>
                 <version>2.1</version>
             </dependency>
+
+            <!-- jsqlparser -->
+            <dependency>
+                <groupId>com.github.jsqlparser</groupId>
+                <artifactId>jsqlparser</artifactId>
+            </dependency>
+
 
 
         </dependencies>

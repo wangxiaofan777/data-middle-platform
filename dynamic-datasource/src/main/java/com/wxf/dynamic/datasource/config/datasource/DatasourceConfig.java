@@ -14,6 +14,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 数据源配置
@@ -24,13 +25,12 @@ import java.util.Map;
 @Configuration
 public class DatasourceConfig {
 
-
     @Bean
     public JdbcTemplate jdbcTemplate(@Qualifier("dynamicDatasource") DynamicDatasource dynamicDatasource) {
         return new JdbcTemplate(dynamicDatasource);
     }
 
-    @Bean
+    @Bean(name = "defaultDatasource")
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
         return DataSourceBuilder.create().build();
@@ -49,7 +49,7 @@ public class DatasourceConfig {
     }
 
     @Bean
-    public DynamicDatasource dynamicDatasource(@Qualifier("dataSource") DataSource dataSource,
+    public DynamicDatasource dynamicDatasource(@Qualifier("defaultDatasource") DataSource dataSource,
                                                @Qualifier("ds1") DataSource d1,
                                                @Qualifier("ds2") DataSource d2) {
         DynamicDatasource dynamicDatasource = new DynamicDatasource();
@@ -58,12 +58,11 @@ public class DatasourceConfig {
         dynamicDatasource.setDefaultTargetDataSource(dataSource);
 
         // 保存所有可切换的数据源
-        Map<Object, Object> dataSourceMap = new HashMap<>(16);
-        dataSourceMap.put("dataSource", dataSource);
-        dataSourceMap.put("ds1", d1);
-        dataSourceMap.put("ds2", d2);
+        DynamicDatasource.dataSourceMap.put("dataSource", dataSource);
+        DynamicDatasource.dataSourceMap.put("ds1", d1);
+        DynamicDatasource.dataSourceMap.put("ds2", d2);
 
-        dynamicDatasource.setTargetDataSources(dataSourceMap);
+        dynamicDatasource.setTargetDataSources(DynamicDatasource.dataSourceMap);
 
         return dynamicDatasource;
     }

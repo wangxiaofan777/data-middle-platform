@@ -29,6 +29,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return userList;
     }
 
+    @Override
+    public List<User> getDynamicUserList() {
+        DynamicDataSourceContextHolder.setDatasource("ds3");
+        List<User> userList = this.baseMapper.selectList(null);
+        DynamicDataSourceContextHolder.clearDataSource();
+        return userList;
+    }
+
     @Ds("ds1")
     @Override
     public List<User> getUserListByDs1() {

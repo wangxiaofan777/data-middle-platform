@@ -56,6 +56,13 @@
             </exclusions>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.jsqlparser</groupId>
+            <artifactId>jsqlparser</artifactId>
+            <version>4.6</version>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- mybatis-spring -->
         <!--修改版本，否则无法找到相应的对象-->
         <dependency>

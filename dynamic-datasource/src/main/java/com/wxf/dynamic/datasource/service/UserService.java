@@ -22,6 +22,13 @@ public interface UserService extends IService<User> {
     List<User> getUserList();
 
     /**
+     * 手动切换数据源
+     *
+     * @return 用户列表
+     */
+    List<User> getDynamicUserList();
+
+    /**
      * 注解切换数据源1
      *
      * @return 用户列表

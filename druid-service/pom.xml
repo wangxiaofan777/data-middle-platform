@@ -25,5 +25,11 @@
             <artifactId>druid</artifactId>
         </dependency>
 
+        <!-- jsqlparser -->
+        <dependency>
+            <groupId>com.github.jsqlparser</groupId>
+            <artifactId>jsqlparser</artifactId>
+        </dependency>
+
     </dependencies>
 </project>
