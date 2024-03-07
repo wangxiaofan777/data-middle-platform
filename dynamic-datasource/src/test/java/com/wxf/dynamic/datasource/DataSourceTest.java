@@ -28,18 +28,6 @@ public class DataSourceTest {
 
     @Test
     public void test() {
-        HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/ds3?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&useIPv6=false");
-        hikariConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        hikariConfig.setUsername("root");
-        hikariConfig.setPassword("root");
-        HikariDataSource hikariDataSource = new HikariDataSource(hikariConfig);
-
-        DynamicDatasource.dataSourceMap.put("ds3", hikariDataSource);
-
-        DynamicDatasource dynamicDatasource = SpringApplicationContext.getBean(DynamicDatasource.class);
-        dynamicDatasource.afterPropertiesSet();
-
         System.out.println(this.userService.getUserList());
     }
 

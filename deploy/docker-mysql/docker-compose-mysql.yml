@@ -7,8 +7,8 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - /Users/wangmaosong/workspace/data-middle-platform/deploy/docker-mysql/config/mysql_master:/etc/mysql/conf.d
-      - /Users/wangmaosong/workspace/data-middle-platform/deploy/docker-mysql/data/mysql_master:/var/lib/mysql
+      - ~/workspace/data-middle-platform/deploy/docker-mysql/config/mysql_master:/etc/mysql/conf.d
+      - ~/data/docker/mysql_master_slave/data/mysql_master:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: admin
@@ -20,8 +20,8 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - /Users/wangmaosong/workspace/data-middle-platform/deploy/docker-mysql/config/mysql_slave01:/etc/mysql/conf.d
-      - /Users/wangmaosong/workspace/data-middle-platform/deploy/docker-mysql/data/mysql_slave01:/var/lib/mysql
+      - ~/workspace/data-middle-platform/deploy/docker-mysql/config/mysql_slave01:/etc/mysql/conf.d
+      - ~/data/docker/mysql_master_slave/data/mysql_slave01:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: admin
@@ -33,8 +33,8 @@ services:
     ports:
       - "3308:3306"
     volumes:
-      - /Users/wangmaosong/workspace/data-middle-platform/deploy/docker-mysql/config/mysql_slave02:/etc/mysql/conf.d
-      - /Users/wangmaosong/workspace/data-middle-platform/deploy/docker-mysql/data/mysql_slave02:/var/lib/mysql
+      - ~/workspace/data-middle-platform/deploy/docker-mysql/config/mysql_slave02:/etc/mysql/conf.d
+      - ~/data/docker/mysql_master_slave/data/mysql_slave02:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: admin

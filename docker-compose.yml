@@ -27,8 +27,8 @@ services:
       - "9000:9000"
       - "9001:9001"
     volumes:
-      - ./data/minio_data/data:/data
-      - ./data/minio_data/config:/root/.minio
+      - ~/data/docker/data-middle-platform/data/minio_data/data:/data
+      - ~/data/docker/data-middle-platform/data/minio_data/config:/root/.minio
     command: server --console-address ":9001" /data
     environment:
       - MINIO_ACCESS_KEY=admin
@@ -44,9 +44,9 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ./config/mongo_config/config:/etc/mongo
-      - ./data/mongo_data/data:/data/db
-      - ./data/mongo_data/logs:/var/log/mongodb
+      - ~/data/docker/data-middle-platform/config/mongo_config/config:/etc/mongo
+      - ~/data/docker/data-middle-platform/data/mongo_data/data:/data/db
+      - ~/data/docker/data-middle-platform/data/mongo_data/logs:/var/log/mongodb
   mongodb-express:
     image: mongo-express
     container_name: mongo-express
@@ -69,8 +69,8 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - ./data/es_data/data:/usr/share/elasticsearch/data
-      - ./data/es_data/logs:/usr/share/elasticsearch/logs
+      - ~/data/docker/data-middle-platform/data/es_data/data:/usr/share/elasticsearch/data
+      - ~/data/docker/data-middle-platform/data/es_data/logs:/usr/share/elasticsearch/logs
 #      - ./config/es_config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
       - "9200:9200"
@@ -104,7 +104,7 @@ services:
       - NACOS_AUTH_IDENTITY_VALUE=2xxx
       - NACOS_AUTH_TOKEN=SecretKey012345678901234567890123456789012345678901234567890123456789
     volumes:
-      - ./data/nacos_data/logs:/home/nacos/logs
+      - ~/data/docker/data-middle-platform/data/nacos_data/logs:/home/nacos/logs
 #      - ./data/nacos_data/conf:/home/nacos/conf
     ports:
       - "8848:8848"
@@ -116,7 +116,7 @@ services:
     container_name: redis
     hostname: redis
     volumes:
-      - ./data/redis_data:/data
+      - ~/data/docker/data-middle-platform/data/redis_data:/data
     ports:
       - "6379:6379"
 #    command: redis-server /redis.conf
@@ -130,7 +130,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./data/mysql_data:/var/lib/mysql
+      - ~/data/docker/data-middle-platform/data/mysql_data:/var/lib/mysql
     #      - ./data/mysql_log/mysqld.log:/var/log/mysqld.log
     environment:
       MYSQL_ROOT_PASSWORD: "root" # root密码
@@ -142,7 +142,7 @@ services:
     container_name: ZooKeeper
     hostname: ZooKeeper
     volumes:
-      - ./data/zk_data:/data
+      - ~/data/docker/data-middle-platform/data/zk_data:/data
     ports:
       - "2181:2181"
     networks:
@@ -161,7 +161,7 @@ services:
       KAFKA_CREATE_TOPICS: "topic_one:1:1,topic_two:3:1"
       KAFKA_ZOOKEEPER_CONNECT: ZooKeeper:2181
     volumes:
-      - ./data/kafka-logs:/kafka
+      - ~/data/docker/data-middle-platform/data/kafka-logs:/kafka
     networks:
       kafka-flink-cluster-network:
         ipv4_address: 172.26.0.11
@@ -171,7 +171,7 @@ services:
     container_name: FlinkJobManager
     hostname: FlinkJobManager
     volumes:
-      - ./data/flink-jobmanager:/data
+      - ~/data/docker/data-middle-platform/data/flink-jobmanager:/data
     expose:
       - "6123"
     links:
@@ -215,7 +215,7 @@ services:
     ports:
       - "8086:8086"
     volumes:
-      - ./data/influxdb_data:/var/lib/influxdb
+      - ~/data/docker/data-middle-platform/data/influxdb_data:/var/lib/influxdb
     environment:
       - INFLUXDB_DB=influxdb
 
@@ -271,7 +271,7 @@ services:
     container_name: promtail
     hostname: promtail
     volumes:
-      - ./logs:/var/log
+      - ~/data/docker/data-middle-platform/logs:/var/log
     networks:
       kafka-flink-cluster-network:
         ipv4_address: 172.26.0.24
