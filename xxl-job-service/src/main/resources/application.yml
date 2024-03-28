@@ -1,0 +1,9 @@
+server:
+  port: 8094
+
+spring:
+  application:
+    name: xxl-job-service
+
+
+

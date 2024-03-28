@@ -51,6 +51,8 @@
         <pdfbox.version>3.0.1</pdfbox.version>
         <shardingsphere-jdbc-core.version>5.2.1</shardingsphere-jdbc-core.version>
         <jsqlparser.version>4.8</jsqlparser.version>
+        <xxl-job.version>2.4.0</xxl-job.version>
+
 
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
     </properties>
@@ -82,6 +84,7 @@
         <module>druid-service</module>
         <module>pdf-service</module>
         <module>sharding-service</module>
+        <module>xxl-job-service</module>
     </modules>
 
 
@@ -695,9 +698,15 @@
             <dependency>
                 <groupId>com.github.jsqlparser</groupId>
                 <artifactId>jsqlparser</artifactId>
+                <version>${jsqlparser.version}</version>
             </dependency>
 
-
+            <!-- xxl-job-core -->
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
